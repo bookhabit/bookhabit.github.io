@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 | 프론트엔드 개발자</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-card: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Project Cards */
+        .project {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-point {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-content h4 {
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .project-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .project-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .project-content strong {
+            color: var(--text-primary);
+        }
+
+        .project-result {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .project-result h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 3rem;
+        }
+
+        .tech-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .tech-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .tech-category h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tech-category h4 {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 1rem 0 0.5rem;
+            font-weight: 600;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-tag {
+            background: white;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .project {
+                padding: 1.5rem;
+            }
+
+            .tech-stack {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">포트폴리오</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#projects">프로젝트</a></li>
+                <li><a href="#tech">기술 스택</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>프론트엔드 개발자</h1>
+            <p>사용자 경험을 중시하며, 성능과 안정성을 고려한 웹/모바일 애플리케이션을 개발합니다.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+                <a href="#tech" class="btn btn-secondary">기술 스택</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">프로젝트</h2>
+
+        <!-- dotoritalk Projects -->
+        <div class="project" data-project="dotoritalk">
+            <div class="project-header">
+                <div class="project-point">dotoritalk</div>
+                <h3 class="project-title">실시간 채팅 시스템 개발</h3>
+            </div>
+            <div class="project-content">
+                <h4>포인트</h4>
+                <ul>
+                    <li>클라이언트와 서버 상태 관리의 일관성 확보</li>
+                    <li>낙관적 업데이트 적용으로 사용자에게 즉각적 UI 피드백 제공</li>
+                </ul>
+                <h4>기능 소개</h4>
+                <ul>
+                    <li>STOMP WebSocket 기반 실시간 메시지 송수신 (텍스트, 이미지, 파일, 이모티콘, 멘션 등 9종 이상 메시지 타입 지원)</li>
+                    <li>FlatList 무한 스크롤로 대용량 메시지 처리</li>
+                    <li>React Query 캐시와 낙관적 업데이트로 UI 즉시 반영</li>
+                    <li>메시지 컴포넌트 구조 확장성 고려한 모듈화 설계</li>
+                </ul>
+                <h4>문제 해결</h4>
+                <ul>
+                    <li><strong>기존 방식 문제:</strong> 클라이언트 상태와 서버 상태가 분리되어 있어 메시지 전송 후 서버 응답 대기 중 UI 반응 지연, 데이터 무결성 문제</li>
+                    <li><strong>개선 방식:</strong> React Query 캐시를 단일 상태 소스로 활용, setQueryData를 통한 낙관적 업데이트 적용으로 메시지 전송 즉시 UI 반영</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>메시지 로딩 속도 1초 이내로 대폭 개선</li>
+                        <li>UI 즉각 반영으로 사용자 경험 향상</li>
+                        <li>무한 스크롤로 메모리 효율적 대용량 데이터 처리 가능</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="dotoritalk">
+            <div class="project-header">
+                <div class="project-point">dotoritalk</div>
+                <h3 class="project-title">대용량 연락처 기반 초대 시스템</h3>
+            </div>
+            <div class="project-content">
+                <h4>포인트</h4>
+                <p>연락처 개수에 비례해 선형적으로 늘어나던 로딩 시간 문제를 백그라운드 동기화 및 로컬 DB 캐싱으로 해결</p>
+                <h4>기능 소개</h4>
+                <ul>
+                    <li><strong>기존:</strong> 페이지 진입 시 대용량 연락처 API 호출 후 UI 렌더링 → 긴 로딩시간, 서버 부하, UX 저하</li>
+                    <li><strong>개선:</strong> 백그라운드(Headless JS)에서 100개 단위 청크 API 호출하여 로컬 SQLite DB에 저장 → 페이지 진입 시 로컬 DB에서 즉시 UI 렌더링, 서버 호출 최소화</li>
+                </ul>
+                <h4>기술 스택 및 업무</h4>
+                <ul>
+                    <li>React Native, Native Modules (Android/iOS 연락처 접근 및 변경 감지), Headless JS, SQLite, MMKV, Chunked API 요청(100개 단위)</li>
+                    <li>연락처 페이지 진입 시 로컬 DB 데이터 확인 후 ContactSyncTask 실행, 앱 포그라운드 복귀 시 동기화 실행</li>
+                    <li>네이티브 권한 체크, 네트워크 상태 확인, 실패 시 롤백 등 예외처리 적용</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>연락처 4,000건 로딩 속도 25초 → 1초 이내로 획기적 개선</li>
+                        <li>JS 스레드 블로킹 제거로 앱 성능 전반 향상</li>
+                        <li>백그라운드 동기화로 앱 진입 시 즉시 UI 제공, 오프라인 환경 지원</li>
+                        <li>연락처 변경 감지 → 디바이스 연락처와 서버 DB 동기화 → 서버 API 호출 수 대폭 감소, 트래픽 및 비용 최적화</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="dotoritalk">
+            <div class="project-header">
+                <div class="project-point">dotoritalk</div>
+                <h3 class="project-title">Offline 지원 및 성능개선을 위한 SQLite 도입</h3>
+            </div>
+            <div class="project-content">
+                <h4>포인트</h4>
+                <p>React Native 앱에 SQLite 기반 로컬 DB를 도입하여 서버 API 의존도를 줄이고, 오프라인 환경에서도 빠르고 안정적인 UX를 제공하는 로컬 우선 구조 구현</p>
+                <h4>기능 소개</h4>
+                <ul>
+                    <li><strong>기존 방식:</strong> 화면 진입 시마다 서버 API 호출 → 로딩 지연 및 불필요한 네트워크 요청 다수 발생</li>
+                    <li><strong>개선 방식:</strong> 로컬 DB에 데이터 저장 후, UI는 로컬 DB 우선 조회 → 서버 호출은 비동기 처리로 UX 지연 최소화</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>오프라인 상태에서도 주요 기능 정상 동작 보장</li>
+                        <li>서버 API 호출 횟수 및 트래픽 대폭 감소</li>
+                        <li>실시간 데이터 변경 시 로컬 DB 및 React Query 캐시 동기화로 UI 일관성 확보</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="dotoritalk">
+            <div class="project-header">
+                <div class="project-point">dotoritalk</div>
+                <h3 class="project-title">알림 기능</h3>
+            </div>
+            <div class="project-content">
+                <h4>포인트</h4>
+                <ul>
+                    <li>FCM 리소스 낭비를 줄이기 위해 <strong>분산 알림 구조</strong> 설계</li>
+                    <li>포그라운드에서 소켓으로 받은 메시지는 로컬 알림(notifee)으로 처리</li>
+                    <li>백그라운드 알림은 FCM으로 처리</li>
+                    <li>메시지 외 알림 타입이 다양해져 복잡해진 구조를 <strong>TypeScript 타입 정의</strong>로 엄격히 관리하여 컴파일 단계에서 오류를 사전에 차단, 유지보수성 향상</li>
+                </ul>
+                <h4>문제 및 해결방안</h4>
+                <ul>
+                    <li><strong>문제:</strong> 모든 알림을 FCM으로 통일해 처리 → 포그라운드에서도 불필요하게 FCM 경유, 리소스 낭비 및 반응 지연 발생</li>
+                    <li><strong>해결방안:</strong> 분산 처리 방식 채택 (포그라운드: WebSocket + 로컬 알림, 백그라운드: FCM), 알림 소스·타입별로 구조화된 TypeScript 인터페이스 설계</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>포그라운드 알림 속도 개선 및 FCM 리소스 절감</li>
+                        <li>다양한 알림 타입에도 일관된 구조 유지 가능</li>
+                        <li>TypeScript 기반의 엄격한 타입 관리로 유지보수 부담 감소 및 확장성 확보</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="dotoritalk">
+            <div class="project-header">
+                <div class="project-point">dotoritalk</div>
+                <h3 class="project-title">인증/인가 E2E 테스트</h3>
+            </div>
+            <div class="project-content">
+                <h4>핵심 가치</h4>
+                <ul>
+                    <li>QA 리소스를 "사람"이 아닌 "시스템"으로 대체</li>
+                    <li>"리팩터링이 두려운 코드"를 "변경 가능한 코드"로 만들기</li>
+                    <li>Form / API 에러 처리를 명세 수준으로 고정</li>
+                </ul>
+                <h4>실무 문제 해결</h4>
+                <ul>
+                    <li>플랫폼별 UI 동작 차이로 테스트 실패 → 상태 기반 테스트로 전환</li>
+                    <li>API 응답 지연 + 애니메이션 타이밍으로 flaky 테스트 발생 → 고정 delay 제거, API 응답 안정화 시점 기준으로 테스트 진행</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>배포 전 인증 기능 회귀 여부를 수 분 내 확인 가능</li>
+                        <li>API 변경 시 프론트/서버 커뮤니케이션 비용 감소</li>
+                        <li>QA 인력이 없어도 신뢰 가능한 검증 체계 확보</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 복지찬스 Projects -->
+        <div class="project" data-project="복지찬스">
+            <div class="project-header">
+                <div class="project-point">복지찬스</div>
+                <h3 class="project-title">네이티브(Kotlin, Swift)로 만보기 기능 자체 개발</h3>
+            </div>
+            <div class="project-content">
+                <h4>서비스 개요</h4>
+                <ul>
+                    <li>React Native 기반 만보기 서비스</li>
+                    <li>Android Foreground Service를 활용한 백그라운드 걸음 수 측정</li>
+                    <li>네이티브(Android) + React Native 하이브리드 구조</li>
+                    <li>실제 사용자 대상 운영 경험 보유 (3개월)</li>
+                </ul>
+                <h4>주요 문제점 및 해결</h4>
+                <ul>
+                    <li><strong>Android Foreground Service 관련 비정상 종료:</strong> Android OS 버전별 서비스 실행 정책 분기 처리, Service 시작 시점 명확화</li>
+                    <li><strong>걸음 수 동기화 문제:</strong> 네이티브 DB를 Single Source of Truth로 설정, Service → DB → React Native 흐름으로 데이터 단방향화</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>Foreground Service 관련 크래시 및 ANR 발생률 유의미하게 감소</li>
+                        <li>알림 센터 / 앱 UI 간 걸음 수 불일치 문제 해결</li>
+                        <li>앱 재실행, 백그라운드 복귀 시에도 일관된 상태 유지</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="복지찬스">
+            <div class="project-header">
+                <div class="project-point">복지찬스</div>
+                <h3 class="project-title">비정상 발생 ANR 대응 (Firebase Crashlytics)</h3>
+            </div>
+            <div class="project-content">
+                <h4>문제 정의</h4>
+                <ul>
+                    <li>Android 12+ 환경에서 비정상 종료 및 ANR 지속 발생</li>
+                    <li>Foreground Service 실행 중 시스템 제약으로 앱 종료</li>
+                    <li>대표 오류: ForegroundServiceStartNotAllowedException</li>
+                </ul>
+                <h4>대응 전략</h4>
+                <ul>
+                    <li>Foreground Service 안정화: Android OS 버전별 서비스 실행 정책 분기 처리</li>
+                    <li>ANR 모니터링 환경 구축: Firebase Crashlytics 연동 (크래시, ANR, 네이티브 스택 트레이스 수집)</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>Foreground Service 관련 크래시 및 ANR 발생률 감소</li>
+                        <li>Android 12+ 환경에서 서비스 안정성 확보</li>
+                        <li>운영 중 장애를 모니터링 기반으로 빠르게 대응 가능한 구조 구축</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="복지찬스">
+            <div class="project-header">
+                <div class="project-point">복지찬스</div>
+                <h3 class="project-title">프로덕션·협력사 환경 분리를 위한 모바일 빌드/버전 관리 시스템 구축</h3>
+            </div>
+            <div class="project-content">
+                <h4>구축 배경</h4>
+                <ul>
+                    <li>프로덕션 환경과 외부 협력사 테스트 환경을 동시에 개발·검증해야 하는 상황</li>
+                    <li>개발자별 로컬 환경 차이로 인한 동작 불일치, 버전 혼선 문제</li>
+                </ul>
+                <h4>해결 방안</h4>
+                <ul>
+                    <li><strong>EAS 클라우드 빌드 환경 구축:</strong> Expo EAS Build 기반 클라우드 빌드 환경 도입, 팀원 및 외부 협력사와 동일한 빌드 결과 공유</li>
+                    <li><strong>플랫폼별 버전 관리 자동화:</strong> 환경별 버전 정책 분리 관리, 스크립트로 자동 관리</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>환경 차이에 의한 오류를 구조적으로 제거</li>
+                        <li>다중 환경·다중 이해관계자 협업에 적합한 배포 체계 구축</li>
+                        <li>협력사 테스트, QA, 프로덕션 릴리즈를 안정적으로 병행</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="복지찬스">
+            <div class="project-header">
+                <div class="project-point">복지찬스</div>
+                <h3 class="project-title">OTA 업데이트 (EAS Updates)를 활용한 긴급 버그 대응</h3>
+            </div>
+            <div class="project-content">
+                <h4>적용 배경</h4>
+                <ul>
+                    <li>스토어 심사 없이 JS 레벨 수정 사항을 즉시 사용자에게 배포할 필요</li>
+                    <li>운영 중 발견되는 경미하지만 긴급한 이슈에 대해 스토어 심사 대기 없이 대응 요구</li>
+                </ul>
+                <h4>적용 방식</h4>
+                <ul>
+                    <li>OTA 적용 범위 명확화: JS 코드 수정으로 해결 가능한 이슈만 OTA 대상으로 한정</li>
+                    <li>환경별 업데이트 채널 분리 운영: preview / release 환경으로 분리</li>
+                    <li>스토어 배포와 OTA 역할 분리</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>JS 수정으로 해결 가능한 이슈를 즉시 사용자에게 반영</li>
+                        <li>긴급 버그 대응 시 스토어 심사 의존도 감소</li>
+                        <li>preview → release 단계적 OTA 배포로 운영 리스크 최소화 및 배포 안정성 확보</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project" data-project="복지찬스">
+            <div class="project-header">
+                <div class="project-point">복지찬스</div>
+                <h3 class="project-title">개발·배포·운영 전반의 프로세스 자동화 및 표준화</h3>
+            </div>
+            <div class="project-content">
+                <h4>핵심 구현</h4>
+                <ul>
+                    <li><strong>Fastlane 활용한 Android / iOS 스토어 배포 자동화:</strong> 스토어 심사 제출 과정을 단일 명령 기반으로 표준화, 릴리즈 담당자 의존성 제거</li>
+                    <li><strong>Notion MCP 기반 문서 중심 개발 및 협업 규칙 표준화:</strong> API 명세를 Single Source of Truth로 정의, 개발 → 문서 → 릴리즈까지 일관되게 동작하는 운영 체계 구축</li>
+                </ul>
+                <div class="project-result">
+                    <h4>결과</h4>
+                    <ul>
+                        <li>배포 안정성과 운영 리스크 감소를 동시에 확보</li>
+                        <li>문서와 코드 간 불일치 문제를 구조적으로 예방</li>
+                        <li>향후 신규 팀원이 합류하더라도 빠르게 이해할 수 있는 협업 시스템 기반 마련</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="tech-stack">
+        <h2 class="section-title">기술 스택</h2>
+
+        <div class="tech-category">
+            <h3>Frontend</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Expo</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h3>Backend</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">NestJS</span>
+                <span class="tech-tag">Prisma</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h3>Database</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">MongoDB</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h3>API / 통신</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">GraphQL</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h3>State Management</h3>
+            <h4>Form 상태 관리</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">React Hook Form</span>
+                <span class="tech-tag">Zod</span>
+            </div>
+            <h4>전역 상태 관리</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Redux</span>
+                <span class="tech-tag">Jotai</span>
+                <span class="tech-tag">Zustand</span>
+                <span class="tech-tag">Recoil</span>
+            </div>
+            <h4>서버 상태 관리</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">React Query</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h3>Styling</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">TailwindCSS</span>
+                <span class="tech-tag">MUI</span>
+                <span class="tech-tag">Styled-components</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h3>Testing</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">Jest</span>
+                <span class="tech-tag">Detox</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h3>Tools</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Cursor</span>
+                <span class="tech-tag">VSCode</span>
+                <span class="tech-tag">Xcode</span>
+                <span class="tech-tag">Android Studio</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 포트폴리오. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all projects
+        document.querySelectorAll('.project').forEach(project => {
+            observer.observe(project);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
