@@ -1,872 +1,2207 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>포트폴리오 | 프론트엔드 개발자</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프론트엔드 개발자 포트폴리오</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      rel="stylesheet"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* ── Reset & Variables ───────────────────────── */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
 
+      :root {
+        /* ── Colors ──────────────────────────────── */
+        --accent: #4f46e5;
+        --accent-light: #ede9fe;
+        --accent-mid: #818cf8;
+        --violet: #7c3aed;
+        --violet-light: #f5f3ff;
+        --text-1: #0f172a;
+        --text-2: #475569;
+        --text-3: #94a3b8;
+        --bg: #ffffff;
+        --bg-subtle: #f8fafc;
+        --border: #e2e8f0;
+        --green: #16a34a;
+        --green-light: #f0fdf4;
+        --green-border: #bbf7d0;
+        --radius-sm: 6px;
+        --radius: 10px;
+        --shadow-sm:
+          0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+        /* ── Typography Scale ────────────────────── */
+        /* 전체 폰트 크기 조절: --font-scale 값만 변경 */
+        --font-scale: 1.2;
+
+        --fs-10: calc(10px * var(--font-scale));
+        --fs-11: calc(11px * var(--font-scale));
+        --fs-12: calc(12px * var(--font-scale));
+        --fs-13: calc(13px * var(--font-scale));
+        --fs-14: calc(14px * var(--font-scale));
+        --fs-15: calc(15px * var(--font-scale));
+        --fs-16: calc(16px * var(--font-scale));
+        --fs-17: calc(17px * var(--font-scale));
+        --fs-18: calc(18px * var(--font-scale));
+        --fs-20: calc(20px * var(--font-scale));
+        --fs-30: calc(30px * var(--font-scale));
+        --fs-46: calc(46px * var(--font-scale));
+      }
+
+      body {
+        font-family:
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          system-ui,
+          sans-serif;
+        font-size: var(--fs-16);
+        line-height: 1.75;
+        color: var(--text-1);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      code {
+        font-family: inherit;
+        font-size: 0.82em;
+        background: #f1f3f5;
+        color: #495057;
+        border-radius: 4px;
+        padding: 2px 6px;
+      }
+
+      /* ── Progress Bar ────────────────────────────── */
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--violet));
+        width: 0%;
+        z-index: 9999;
+        transition: width 0.08s linear;
+      }
+
+      /* ── Navigation ──────────────────────────────── */
+      nav {
+        position: sticky;
+        top: 0;
+        height: 52px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        z-index: 100;
+      }
+      .nav-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-size: var(--fs-14);
+        font-weight: 700;
+        color: var(--text-1);
+        text-decoration: none;
+        letter-spacing: -0.01em;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: var(--fs-13);
+        font-weight: 500;
+        color: var(--text-2);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* ── Page Wrapper ────────────────────────────── */
+      .page {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ── Hero ────────────────────────────────────── */
+      .hero {
+        padding: 72px 24px 60px;
+        max-width: 860px;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-role {
+        font-size: var(--fs-13);
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .hero-name {
+        font-size: var(--fs-46);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        color: var(--text-1);
+      }
+      .hero-name .accent-dot {
+        color: var(--accent);
+      }
+      .hero-desc {
+        font-size: var(--fs-17);
+        color: var(--text-2);
+        line-height: 1.85;
+        max-width: 680px;
+        margin-bottom: 24px;
+        word-break: keep-all;
+      }
+      .hero-traits {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 580px;
+        margin-bottom: 36px;
+      }
+      .hero-traits li {
+        font-size: var(--fs-14);
+        color: var(--text-2);
+        line-height: 1.7;
+        word-break: keep-all;
+        padding-left: 16px;
+        position: relative;
+      }
+      .hero-traits li::before {
+        content: "-";
+        position: absolute;
+        left: 0;
+        color: var(--accent-mid);
+        font-weight: 700;
+      }
+      .hero-traits li strong {
+        color: var(--text-1);
+        font-weight: 600;
+        margin-right: 6px;
+      }
+      .hero-trait-link {
+        color: var(--text-1);
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1.5px solid var(--accent-light);
+        padding-bottom: 1px;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+      .hero-trait-link:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      .hero-contacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .contact-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: var(--fs-14);
+        font-weight: 500;
+        color: var(--text-2);
+        text-decoration: none;
+        padding: 7px 14px;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        background: var(--bg);
+        transition: all 0.2s;
+      }
+      .contact-chip:hover {
+        color: var(--accent);
+        border-color: var(--accent-mid);
+        background: var(--accent-light);
+      }
+      .contact-chip svg {
+        flex-shrink: 0;
+      }
+
+      /* ── Section Base ────────────────────────────── */
+      .section {
+        padding: 56px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .section:last-child {
+        border-bottom: none;
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        column-gap: 48px;
+      }
+      .section-label {
+        font-size: var(--fs-12);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        padding-top: 3px;
+        position: sticky;
+        top: 72px;
+        align-self: start;
+      }
+
+      /* ── Career ──────────────────────────────────── */
+      .career-company {
+        font-size: var(--fs-18);
+        font-weight: 800;
+        color: var(--text-1);
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+      }
+      .career-meta {
+        font-size: var(--fs-13);
+        color: var(--text-3);
+        margin-bottom: 20px;
+      }
+      .career-meta strong {
+        color: var(--text-2);
+        font-weight: 600;
+      }
+      .career-projects {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .career-proj-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .career-proj-badge {
+        flex-shrink: 0;
+        font-size: var(--fs-11);
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: var(--radius-sm);
+        background: var(--accent);
+        color: white;
+        letter-spacing: 0.02em;
+        margin-top: 2px;
+      }
+      .career-proj-badge.violet {
+        background: var(--violet);
+      }
+      .career-proj-body {
+      }
+      .career-proj-title {
+        font-size: var(--fs-14);
+        font-weight: 700;
+        color: var(--text-1);
+        margin-bottom: 3px;
+      }
+      .career-proj-link {
+        color: inherit;
+        text-decoration: none;
+        border-bottom: 1.5px solid var(--accent);
+        padding-bottom: 1px;
+        transition: color 0.15s;
+      }
+      .career-proj-link:hover {
+        color: var(--accent);
+      }
+      .career-item-link {
+        color: var(--text-2);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--border);
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+      .career-item-link:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      .career-proj-desc {
+        font-size: var(--fs-13);
+        color: var(--text-2);
+        line-height: 1.7;
+        word-break: keep-all;
+        padding-left: 14px;
+        margin-top: 4px;
+      }
+
+      /* ── Project Card ────────────────────────────── */
+      .project-section-title {
+        font-size: var(--fs-11);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        padding-bottom: 14px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .project-section-title span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .project-section-title span::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .project-section-title.violet span::before {
+        background: var(--violet);
+      }
+
+      .project-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 12px;
+        overflow: hidden;
+        transition:
+          box-shadow 0.2s,
+          border-color 0.2s;
+      }
+      .project-card:hover {
+        box-shadow: var(--shadow);
+      }
+      .project-card.open {
+        border-color: var(--accent-mid);
+        box-shadow: 0 0 0 3px var(--accent-light);
+      }
+      .project-card.violet.open {
+        border-color: #a78bfa;
+        box-shadow: 0 0 0 3px var(--violet-light);
+      }
+
+      .pc-header {
+        padding: 18px 20px;
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: start;
+        transition: background 0.15s;
+      }
+      .pc-header:hover {
+        background: var(--bg-subtle);
+      }
+
+      .pc-tag {
+        display: inline-block;
+        font-size: var(--fs-10);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: var(--accent-light);
+        color: var(--accent);
+        margin-bottom: 7px;
+      }
+      .pc-tag.violet {
+        background: var(--violet-light);
+        color: var(--violet);
+      }
+
+      .pc-title {
+        font-size: var(--fs-15);
+        font-weight: 700;
+        color: var(--text-1);
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        margin-bottom: 6px;
+      }
+      .pc-summary {
+        font-size: var(--fs-13);
+        color: var(--text-2);
+        line-height: 1.65;
+        word-break: keep-all;
+      }
+      .pc-results {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .pc-result-chip {
+        font-size: var(--fs-11);
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 100px;
+        background: var(--green-light);
+        color: var(--green);
+        border: 1px solid var(--green-border);
+      }
+
+      .pc-chevron {
+        width: 20px;
+        height: 20px;
+        color: var(--text-3);
+        flex-shrink: 0;
+        transition: transform 0.25s;
+        margin-top: 1px;
+      }
+      .project-card.open .pc-chevron {
+        transform: rotate(180deg);
+      }
+
+      .pc-body {
+        display: none;
+        padding: 0 20px 20px;
+      }
+      .project-card.open .pc-body {
+        display: block;
+      }
+
+      .pc-divider {
+        height: 1px;
+        background: var(--border);
+        margin-bottom: 20px;
+      }
+
+      .detail-block {
+        margin-bottom: 18px;
+      }
+      .detail-block:last-child {
+        margin-bottom: 0;
+      }
+      .detail-label {
+        font-size: var(--fs-11);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        margin-bottom: 8px;
+      }
+      .detail-items {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .detail-items li {
+        font-size: var(--fs-14);
+        color: var(--text-2);
+        padding-left: 14px;
+        position: relative;
+        line-height: 1.7;
+        word-break: keep-all;
+      }
+      .detail-items li::before {
+        content: "·";
+        position: absolute;
+        left: 3px;
+        color: var(--accent-mid);
+        font-size: var(--fs-16);
+        line-height: 1.4;
+      }
+      .detail-items.violet li::before {
+        color: #a78bfa;
+      }
+
+      .result-box {
+        background: var(--green-light);
+        border: 1px solid var(--green-border);
+        border-radius: var(--radius-sm);
+        padding: 14px 16px;
+        margin-top: 16px;
+      }
+      .result-box .detail-label {
+        color: var(--green);
+      }
+
+      .quote-box {
+        background: var(--bg-subtle);
+        border-left: 3px solid var(--border);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 12px 16px;
+        margin-top: 14px;
+        font-size: var(--fs-13);
+        color: var(--text-2);
+        font-style: italic;
+        line-height: 1.75;
+        word-break: keep-all;
+      }
+
+      .accent-box {
+        background: var(--accent-light);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 12px 16px;
+        margin-top: 14px;
+      }
+      .accent-box .detail-label {
+        color: var(--accent);
+      }
+
+      /* ── Skills ──────────────────────────────────── */
+      .skill-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .skill-row {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 12px 16px;
+        align-items: start;
+      }
+      .skill-cat {
+        font-size: var(--fs-12);
+        font-weight: 600;
+        color: var(--text-2);
+        padding-top: 5px;
+        line-height: 1.4;
+      }
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .skill-tag {
+        font-size: var(--fs-13);
+        font-weight: 500;
+        padding: 4px 12px;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        color: var(--text-2);
+        background: var(--bg);
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .skill-tag:hover {
+        border-color: var(--accent-mid);
+        color: var(--accent);
+        background: var(--accent-light);
+      }
+      .skill-tag.key {
+        background: var(--accent-light);
+        border-color: var(--accent-mid);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* ── Side Projects ───────────────────────────── */
+      .side-list {
+        display: flex;
+        flex-direction: column;
+      }
+      .side-item {
+        padding: 18px 0;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: start;
+      }
+      .side-item:last-child {
+        border-bottom: none;
+      }
+      .side-title {
+        font-size: var(--fs-15);
+        font-weight: 700;
+        color: var(--text-1);
+        margin-bottom: 5px;
+        letter-spacing: -0.01em;
+      }
+      .side-desc {
+        font-size: var(--fs-13);
+        color: var(--text-2);
+        line-height: 1.65;
+        word-break: keep-all;
+      }
+      .side-desc li {
+        padding-left: 12px;
+        position: relative;
+      }
+      .side-desc li::before {
+        content: "·";
+        position: absolute;
+        left: 2px;
+        color: var(--text-3);
+      }
+      .side-period {
+        font-size: var(--fs-12);
+        color: var(--text-3);
+        font-weight: 500;
+        white-space: nowrap;
+        text-align: right;
+      }
+
+      /* ── Footer / Contact ────────────────────────── */
+      .footer-contact {
+        padding: 48px 0 56px;
+      }
+      .footer-contact-title {
+        font-size: var(--fs-20);
+        font-weight: 700;
+        color: var(--text-1);
+        margin-bottom: 6px;
+      }
+      .footer-contact-sub {
+        font-size: var(--fs-14);
+        color: var(--text-2);
+        margin-bottom: 24px;
+      }
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: var(--fs-14);
+      }
+      .contact-row-label {
+        font-size: var(--fs-11);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        width: 56px;
+      }
+      .contact-row a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .contact-row a:hover {
+        text-decoration: underline;
+      }
+      .contact-row span {
+        color: var(--text-2);
+      }
+
+      /* ── Responsive ──────────────────────────────── */
+      @media (max-width: 680px) {
+        /* 모바일에서 필요한 폰트 변수만 오버라이드 */
         :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary-color: #8b5cf6;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-card: #ffffff;
-            --border-color: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          --fs-46: calc(30px * var(--font-scale));
+          --fs-17: calc(15px * var(--font-scale));
+          --fs-12: calc(10px * var(--font-scale));
         }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-primary);
-            overflow-x: hidden;
+        .section-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
         }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+        .section-label {
+          position: static;
         }
-
-        nav.scrolled {
-            padding: 0.75rem 0;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
+          padding: 48px 20px 40px;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+        .section {
+          padding: 40px 0;
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            animation: fadeInUp 1s ease;
+        .nav-links {
+          display: none;
         }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
+        .skill-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
         }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+        .side-item {
+          grid-template-columns: 1fr;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .side-period {
+          text-align: left;
         }
-
-        .btn {
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+        .page {
+          padding: 0 18px;
         }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--text-primary);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 2px;
-        }
-
-        /* Project Cards */
-        .project {
-            background: var(--bg-card);
-            border-radius: 1rem;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .project.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.75rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .project-point {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .project-content {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-content h4 {
-            color: var(--text-primary);
-            margin: 1.5rem 0 0.75rem;
-            font-size: 1.1rem;
-        }
-
-        .project-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .project-content li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--text-secondary);
-        }
-
-        .project-content li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .project-content strong {
-            color: var(--text-primary);
-        }
-
-        .project-result {
-            background: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-top: 1.5rem;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .project-result h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.75rem;
-        }
-
-        /* Tech Stack */
-        .tech-stack {
-            background: var(--bg-secondary);
-            border-radius: 1rem;
-            padding: 3rem;
-        }
-
-        .tech-category {
-            margin-bottom: 2.5rem;
-        }
-
-        .tech-category:last-child {
-            margin-bottom: 0;
-        }
-
-        .tech-category h3 {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .tech-category h4 {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin: 1rem 0 0.5rem;
-            font-weight: 600;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .tech-tag {
-            background: white;
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 2px solid var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .project {
-                padding: 1.5rem;
-            }
-
-            .tech-stack {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
     <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">포트폴리오</div>
-            <ul class="nav-links">
-                <li><a href="#home">홈</a></li>
-                <li><a href="#projects">프로젝트</a></li>
-                <li><a href="#tech">기술 스택</a></li>
-            </ul>
-        </div>
+    <nav>
+      <div class="nav-inner">
+        <a href="#home" class="nav-logo">FE<span>.</span>DEV</a>
+        <ul class="nav-links">
+          <li><a href="#career">경력</a></li>
+          <li><a href="#bizbitalk">비즈비톡</a></li>
+          <li><a href="#bokji">복지찬스</a></li>
+          <li><a href="#skills">기술 스택</a></li>
+          <li><a href="#side">사이드 프로젝트</a></li>
+          <li><a href="#contact">연락처</a></li>
+        </ul>
+      </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>프론트엔드 개발자</h1>
-            <p>사용자 경험을 중시하며, 성능과 안정성을 고려한 웹/모바일 애플리케이션을 개발합니다.</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-                <a href="#tech" class="btn btn-secondary">기술 스택</a>
-            </div>
-        </div>
+      <p class="hero-role">Frontend Developer</p>
+      <!-- 이름을 아래에 입력해주세요 -->
+      <h1 class="hero-name">이현진<span class="accent-dot">.</span></h1>
+      <p class="hero-desc">
+        기능 구현에 그치지 않고 시스템의 동작 원리를 이해하며<br />
+        아키텍처 설계, 성능 최적화, 배포 자동화까지 주도한 프론트엔드
+        개발자입니다.
+      </p>
+      <ul class="hero-traits">
+        <li>
+          <a href="#bokji-ssot" class="hero-trait-link"
+            >플랫폼 내부 동작 원리를 기반으로 한 아키텍처 설계</a
+          >
+        </li>
+        <li>
+          <a href="#bokji-pedometer" class="hero-trait-link"
+            >삼성헬스·토스 벤치마킹 기반 실환경 엣지케이스 전방위 대응</a
+          >
+        </li>
+        <li>
+          <a href="#bokji-deploy" class="hero-trait-link"
+            >기능 개발부터 배포·모니터링까지 전 주기 주도</a
+          >
+        </li>
+      </ul>
+      <div class="hero-contacts">
+        <a class="contact-chip" href="mailto:ckeh08270827@gmail.com">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          ckeh08270827@gmail.com
+        </a>
+        <a class="contact-chip" href="tel:010-7607-9182">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
+          010-7607-9182
+        </a>
+        <a
+          class="contact-chip"
+          href="https://github.com/bookhabit"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"
+            />
+          </svg>
+          github.com/bookhabit
+        </a>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title">프로젝트</h2>
-
-        <!-- dotoritalk Projects -->
-        <div class="project" data-project="dotoritalk">
-            <div class="project-header">
-                <div class="project-point">dotoritalk</div>
-                <h3 class="project-title">실시간 채팅 시스템 개발</h3>
+    <div class="page">
+      <!-- ── 경력 ── -->
+      <div class="section" id="career">
+        <div class="section-grid">
+          <div class="section-label">경력</div>
+          <div>
+            <div class="career-company">주식회사 비즈비</div>
+            <div class="career-meta">
+              프론트엔드 개발자 &nbsp;·&nbsp;
+              <strong>2024.05 – 재직 중</strong>
             </div>
-            <div class="project-content">
-                <h4>포인트</h4>
-                <ul>
+            <div class="career-projects">
+              <div class="career-proj-row">
+                <span class="career-proj-badge violet">복지찬스</span>
+                <div class="career-proj-body">
+                  <div class="career-proj-title">
+                    복지찬스 APP 개발 &nbsp;<span
+                      style="
+                        font-size: var(--fs-12);
+                        font-weight: 500;
+                        color: var(--text-3);
+                      "
+                      >2025.08 – 현재</span
+                    >
+                  </div>
+                  <ul class="career-proj-desc">
+                    <li>
+                      <a href="#bokji-ssot" class="career-item-link"
+                        >만보기 서비스 - SSOT 기반 아키텍처 재설계</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bokji-pedometer" class="career-item-link"
+                        >네이티브 만보기 엔진 설계 - 삼성헬스·토스 벤치마킹</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bokji-crashlytics" class="career-item-link"
+                        >만보기 서비스 - Firebase Crashlytics 기반 ANR 모니터링
+                        체계 구축</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bokji-sdk" class="career-item-link"
+                        >Expo SDK 마이그레이션 (v51 → v53)</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bokji-deploy" class="career-item-link"
+                        >EAS / Fastlane 기반 배포 자동화 주도</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="career-proj-row">
+                <span class="career-proj-badge">비즈비톡</span>
+                <div class="career-proj-body">
+                  <div class="career-proj-title">
+                    비즈비톡 APP 개발 &nbsp;<span
+                      style="
+                        font-size: var(--fs-12);
+                        font-weight: 500;
+                        color: var(--text-3);
+                      "
+                      >2024.09 – 2025.07</span
+                    >
+                  </div>
+                  <ul class="career-proj-desc">
+                    <li>
+                      <a href="#bbt-chat" class="career-item-link"
+                        >STOMP WebSocket 기반 실시간 채팅 시스템 구축</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bbt-contact" class="career-item-link"
+                        >연락처 4,000건 로딩 25초 → 1초 이내 개선</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bbt-sqlite" class="career-item-link"
+                        >SQLite 도입으로 오프라인 메시지 지원</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bbt-e2e" class="career-item-link"
+                        >Detox E2E 테스트 자동화</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 비즈비톡 프로젝트 ── -->
+      <div class="section" id="bizbitalk">
+        <div class="section-grid">
+          <div class="section-label">비즈비톡</div>
+          <div>
+            <div class="project-section-title">
+              <span>실무 프로젝트 상세 - 비즈비톡</span>
+            </div>
+
+            <!-- 1. 실시간 채팅 -->
+            <div class="project-card" id="bbt-chat" onclick="toggle(this)">
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag">채팅</div>
+                  <div class="pc-title">실시간 채팅 시스템 개발</div>
+                  <div class="pc-summary">
+                    STOMP WebSocket 기반 9종 이상 메시지 타입 지원. React Query
+                    낙관적 업데이트로 서버 응답 전 UI 즉시 반영.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">메시지 로딩 1초 이내</span>
+                    <span class="pc-result-chip">UI 즉각 반영</span>
+                    <span class="pc-result-chip">무한 스크롤</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">포인트</div>
+                  <ul class="detail-items">
                     <li>클라이언트와 서버 상태 관리의 일관성 확보</li>
-                    <li>낙관적 업데이트 적용으로 사용자에게 즉각적 UI 피드백 제공</li>
-                </ul>
-                <h4>기능 소개</h4>
-                <ul>
-                    <li>STOMP WebSocket 기반 실시간 메시지 송수신 (텍스트, 이미지, 파일, 이모티콘, 멘션 등 9종 이상 메시지 타입 지원)</li>
+                    <li>
+                      낙관적 업데이트 적용으로 사용자에게 즉각적인 UI 피드백
+                      제공
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">기능 소개</div>
+                  <ul class="detail-items">
+                    <li>
+                      STOMP WebSocket 기반 실시간 메시지 송수신 (텍스트, 이미지,
+                      파일, 이모티콘, 멘션 등 9종 이상)
+                    </li>
                     <li>FlatList 무한 스크롤로 대용량 메시지 처리</li>
                     <li>React Query 캐시와 낙관적 업데이트로 UI 즉시 반영</li>
-                    <li>메시지 컴포넌트 구조 확장성 고려한 모듈화 설계</li>
-                </ul>
-                <h4>문제 해결</h4>
-                <ul>
-                    <li><strong>기존 방식 문제:</strong> 클라이언트 상태와 서버 상태가 분리되어 있어 메시지 전송 후 서버 응답 대기 중 UI 반응 지연, 데이터 무결성 문제</li>
-                    <li><strong>개선 방식:</strong> React Query 캐시를 단일 상태 소스로 활용, setQueryData를 통한 낙관적 업데이트 적용으로 메시지 전송 즉시 UI 반영</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>메시지 로딩 속도 1초 이내로 대폭 개선</li>
-                        <li>UI 즉각 반영으로 사용자 경험 향상</li>
-                        <li>무한 스크롤로 메모리 효율적 대용량 데이터 처리 가능</li>
-                    </ul>
+                    <li>메시지 컴포넌트 구조의 확장성을 고려한 모듈화 설계</li>
+                  </ul>
                 </div>
-            </div>
-        </div>
-
-        <div class="project" data-project="dotoritalk">
-            <div class="project-header">
-                <div class="project-point">dotoritalk</div>
-                <h3 class="project-title">대용량 연락처 기반 초대 시스템</h3>
-            </div>
-            <div class="project-content">
-                <h4>포인트</h4>
-                <p>연락처 개수에 비례해 선형적으로 늘어나던 로딩 시간 문제를 백그라운드 동기화 및 로컬 DB 캐싱으로 해결</p>
-                <h4>기능 소개</h4>
-                <ul>
-                    <li><strong>기존:</strong> 페이지 진입 시 대용량 연락처 API 호출 후 UI 렌더링 → 긴 로딩시간, 서버 부하, UX 저하</li>
-                    <li><strong>개선:</strong> 백그라운드(Headless JS)에서 100개 단위 청크 API 호출하여 로컬 SQLite DB에 저장 → 페이지 진입 시 로컬 DB에서 즉시 UI 렌더링, 서버 호출 최소화</li>
-                </ul>
-                <h4>기술 스택 및 업무</h4>
-                <ul>
-                    <li>React Native, Native Modules (Android/iOS 연락처 접근 및 변경 감지), Headless JS, SQLite, MMKV, Chunked API 요청(100개 단위)</li>
-                    <li>연락처 페이지 진입 시 로컬 DB 데이터 확인 후 ContactSyncTask 실행, 앱 포그라운드 복귀 시 동기화 실행</li>
-                    <li>네이티브 권한 체크, 네트워크 상태 확인, 실패 시 롤백 등 예외처리 적용</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>연락처 4,000건 로딩 속도 25초 → 1초 이내로 획기적 개선</li>
-                        <li>JS 스레드 블로킹 제거로 앱 성능 전반 향상</li>
-                        <li>백그라운드 동기화로 앱 진입 시 즉시 UI 제공, 오프라인 환경 지원</li>
-                        <li>연락처 변경 감지 → 디바이스 연락처와 서버 DB 동기화 → 서버 API 호출 수 대폭 감소, 트래픽 및 비용 최적화</li>
-                    </ul>
+                <div class="detail-block">
+                  <div class="detail-label">문제 해결</div>
+                  <ul class="detail-items">
+                    <li>
+                      <strong>기존 문제:</strong> 클라이언트 상태와 서버 상태가
+                      분리되어 메시지 전송 후 서버 응답 대기 중 UI 반응 지연,
+                      데이터 무결성 문제 발생
+                    </li>
+                    <li>
+                      <strong>개선:</strong> React Query 캐시를 단일 상태 소스로
+                      활용. <code>setQueryData</code>를 통한 낙관적 업데이트로
+                      메시지 전송 즉시 UI 반영
+                    </li>
+                  </ul>
                 </div>
-            </div>
-        </div>
-
-        <div class="project" data-project="dotoritalk">
-            <div class="project-header">
-                <div class="project-point">dotoritalk</div>
-                <h3 class="project-title">Offline 지원 및 성능개선을 위한 SQLite 도입</h3>
-            </div>
-            <div class="project-content">
-                <h4>포인트</h4>
-                <p>React Native 앱에 SQLite 기반 로컬 DB를 도입하여 서버 API 의존도를 줄이고, 오프라인 환경에서도 빠르고 안정적인 UX를 제공하는 로컬 우선 구조 구현</p>
-                <h4>기능 소개</h4>
-                <ul>
-                    <li><strong>기존 방식:</strong> 화면 진입 시마다 서버 API 호출 → 로딩 지연 및 불필요한 네트워크 요청 다수 발생</li>
-                    <li><strong>개선 방식:</strong> 로컬 DB에 데이터 저장 후, UI는 로컬 DB 우선 조회 → 서버 호출은 비동기 처리로 UX 지연 최소화</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>오프라인 상태에서도 주요 기능 정상 동작 보장</li>
-                        <li>서버 API 호출 횟수 및 트래픽 대폭 감소</li>
-                        <li>실시간 데이터 변경 시 로컬 DB 및 React Query 캐시 동기화로 UI 일관성 확보</li>
-                    </ul>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>메시지 로딩 속도 1초 이내로 개선</li>
+                    <li>UI 즉각 반영으로 사용자 경험 향상</li>
+                    <li>무한 스크롤로 메모리 효율적인 대용량 데이터 처리</li>
+                  </ul>
                 </div>
+              </div>
             </div>
-        </div>
 
-        <div class="project" data-project="dotoritalk">
-            <div class="project-header">
-                <div class="project-point">dotoritalk</div>
-                <h3 class="project-title">알림 기능</h3>
-            </div>
-            <div class="project-content">
-                <h4>포인트</h4>
-                <ul>
-                    <li>FCM 리소스 낭비를 줄이기 위해 <strong>분산 알림 구조</strong> 설계</li>
-                    <li>포그라운드에서 소켓으로 받은 메시지는 로컬 알림(notifee)으로 처리</li>
-                    <li>백그라운드 알림은 FCM으로 처리</li>
-                    <li>메시지 외 알림 타입이 다양해져 복잡해진 구조를 <strong>TypeScript 타입 정의</strong>로 엄격히 관리하여 컴파일 단계에서 오류를 사전에 차단, 유지보수성 향상</li>
-                </ul>
-                <h4>문제 및 해결방안</h4>
-                <ul>
-                    <li><strong>문제:</strong> 모든 알림을 FCM으로 통일해 처리 → 포그라운드에서도 불필요하게 FCM 경유, 리소스 낭비 및 반응 지연 발생</li>
-                    <li><strong>해결방안:</strong> 분산 처리 방식 채택 (포그라운드: WebSocket + 로컬 알림, 백그라운드: FCM), 알림 소스·타입별로 구조화된 TypeScript 인터페이스 설계</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>포그라운드 알림 속도 개선 및 FCM 리소스 절감</li>
-                        <li>다양한 알림 타입에도 일관된 구조 유지 가능</li>
-                        <li>TypeScript 기반의 엄격한 타입 관리로 유지보수 부담 감소 및 확장성 확보</li>
-                    </ul>
+            <!-- 2. 연락처 초대 -->
+            <div class="project-card" id="bbt-contact" onclick="toggle(this)">
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag">성능 최적화</div>
+                  <div class="pc-title">대용량 연락처 기반 초대 시스템</div>
+                  <div class="pc-summary">
+                    연락처 개수에 비례해 늘어나던 로딩 시간을 백그라운드 동기화
+                    + 로컬 SQLite DB 캐싱으로 해결.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">4,000건 25초 → 1초 이내</span>
+                    <span class="pc-result-chip">오프라인 지원</span>
+                    <span class="pc-result-chip">서버 부하 감소</span>
+                  </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="project" data-project="dotoritalk">
-            <div class="project-header">
-                <div class="project-point">dotoritalk</div>
-                <h3 class="project-title">인증/인가 E2E 테스트</h3>
-            </div>
-            <div class="project-content">
-                <h4>핵심 가치</h4>
-                <ul>
-                    <li>QA 리소스를 "사람"이 아닌 "시스템"으로 대체</li>
-                    <li>"리팩터링이 두려운 코드"를 "변경 가능한 코드"로 만들기</li>
-                    <li>Form / API 에러 처리를 명세 수준으로 고정</li>
-                </ul>
-                <h4>실무 문제 해결</h4>
-                <ul>
-                    <li>플랫폼별 UI 동작 차이로 테스트 실패 → 상태 기반 테스트로 전환</li>
-                    <li>API 응답 지연 + 애니메이션 타이밍으로 flaky 테스트 발생 → 고정 delay 제거, API 응답 안정화 시점 기준으로 테스트 진행</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>배포 전 인증 기능 회귀 여부를 수 분 내 확인 가능</li>
-                        <li>API 변경 시 프론트/서버 커뮤니케이션 비용 감소</li>
-                        <li>QA 인력이 없어도 신뢰 가능한 검증 체계 확보</li>
-                    </ul>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">개선 전 vs 후</div>
+                  <ul class="detail-items">
+                    <li>
+                      <strong>기존:</strong> 페이지 진입 시 대용량 연락처 API
+                      호출 후 UI 렌더링 → 긴 로딩 시간, 서버 부하, UX 저하
+                    </li>
+                    <li>
+                      <strong>개선:</strong> 백그라운드(Headless JS)에서 100개
+                      단위 청크 API 호출 → 로컬 SQLite DB 저장 → 페이지 진입 시
+                      로컬 DB에서 즉시 렌더링
+                    </li>
+                  </ul>
                 </div>
-            </div>
-        </div>
-
-        <!-- 복지찬스 Projects -->
-        <div class="project" data-project="복지찬스">
-            <div class="project-header">
-                <div class="project-point">복지찬스</div>
-                <h3 class="project-title">네이티브(Kotlin, Swift)로 만보기 기능 자체 개발</h3>
-            </div>
-            <div class="project-content">
-                <h4>서비스 개요</h4>
-                <ul>
-                    <li>React Native 기반 만보기 서비스</li>
-                    <li>Android Foreground Service를 활용한 백그라운드 걸음 수 측정</li>
-                    <li>네이티브(Android) + React Native 하이브리드 구조</li>
-                    <li>실제 사용자 대상 운영 경험 보유 (3개월)</li>
-                </ul>
-                <h4>주요 문제점 및 해결</h4>
-                <ul>
-                    <li><strong>Android Foreground Service 관련 비정상 종료:</strong> Android OS 버전별 서비스 실행 정책 분기 처리, Service 시작 시점 명확화</li>
-                    <li><strong>걸음 수 동기화 문제:</strong> 네이티브 DB를 Single Source of Truth로 설정, Service → DB → React Native 흐름으로 데이터 단방향화</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>Foreground Service 관련 크래시 및 ANR 발생률 유의미하게 감소</li>
-                        <li>알림 센터 / 앱 UI 간 걸음 수 불일치 문제 해결</li>
-                        <li>앱 재실행, 백그라운드 복귀 시에도 일관된 상태 유지</li>
-                    </ul>
+                <div class="detail-block">
+                  <div class="detail-label">기술 스택</div>
+                  <ul class="detail-items">
+                    <li>
+                      React Native, Native Modules (Android/iOS 연락처 접근 및
+                      변경 감지), Headless JS, SQLite
+                    </li>
+                    <li>
+                      연락처 페이지 진입 시 로컬 DB 확인 후 ContactSyncTask
+                      실행, 앱 포그라운드 복귀 시 자동 동기화
+                    </li>
+                    <li>
+                      네이티브 권한 체크, 네트워크 상태 확인, 실패 시 롤백 등
+                      예외처리 적용
+                    </li>
+                  </ul>
                 </div>
-            </div>
-        </div>
-
-        <div class="project" data-project="복지찬스">
-            <div class="project-header">
-                <div class="project-point">복지찬스</div>
-                <h3 class="project-title">비정상 발생 ANR 대응 (Firebase Crashlytics)</h3>
-            </div>
-            <div class="project-content">
-                <h4>문제 정의</h4>
-                <ul>
-                    <li>Android 12+ 환경에서 비정상 종료 및 ANR 지속 발생</li>
-                    <li>Foreground Service 실행 중 시스템 제약으로 앱 종료</li>
-                    <li>대표 오류: ForegroundServiceStartNotAllowedException</li>
-                </ul>
-                <h4>대응 전략</h4>
-                <ul>
-                    <li>Foreground Service 안정화: Android OS 버전별 서비스 실행 정책 분기 처리</li>
-                    <li>ANR 모니터링 환경 구축: Firebase Crashlytics 연동 (크래시, ANR, 네이티브 스택 트레이스 수집)</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>Foreground Service 관련 크래시 및 ANR 발생률 감소</li>
-                        <li>Android 12+ 환경에서 서비스 안정성 확보</li>
-                        <li>운영 중 장애를 모니터링 기반으로 빠르게 대응 가능한 구조 구축</li>
-                    </ul>
+                <div class="detail-block">
+                  <div class="detail-label">문제 해결 과정</div>
+                  <ul class="detail-items">
+                    <li>
+                      1단계: 전체 연락처 서버 전송 → 긴 로딩, 높은 서버 부하
+                    </li>
+                    <li>
+                      2단계: UI 선노출 + API 점진 호출 → 초기 UX 개선이나 API
+                      요청량·검색 불일치 미해결
+                    </li>
+                    <li>
+                      3단계: 백그라운드 동기화 + 로컬 캐싱 도입 → UX 대폭 개선,
+                      서버 부하 감소, 안정성 확보
+                    </li>
+                  </ul>
                 </div>
-            </div>
-        </div>
-
-        <div class="project" data-project="복지찬스">
-            <div class="project-header">
-                <div class="project-point">복지찬스</div>
-                <h3 class="project-title">프로덕션·협력사 환경 분리를 위한 모바일 빌드/버전 관리 시스템 구축</h3>
-            </div>
-            <div class="project-content">
-                <h4>구축 배경</h4>
-                <ul>
-                    <li>프로덕션 환경과 외부 협력사 테스트 환경을 동시에 개발·검증해야 하는 상황</li>
-                    <li>개발자별 로컬 환경 차이로 인한 동작 불일치, 버전 혼선 문제</li>
-                </ul>
-                <h4>해결 방안</h4>
-                <ul>
-                    <li><strong>EAS 클라우드 빌드 환경 구축:</strong> Expo EAS Build 기반 클라우드 빌드 환경 도입, 팀원 및 외부 협력사와 동일한 빌드 결과 공유</li>
-                    <li><strong>플랫폼별 버전 관리 자동화:</strong> 환경별 버전 정책 분리 관리, 스크립트로 자동 관리</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>환경 차이에 의한 오류를 구조적으로 제거</li>
-                        <li>다중 환경·다중 이해관계자 협업에 적합한 배포 체계 구축</li>
-                        <li>협력사 테스트, QA, 프로덕션 릴리즈를 안정적으로 병행</li>
-                    </ul>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>연락처 4,000건 로딩: 25초 → 1초 이내로 획기적 개선</li>
+                    <li>JS 스레드 블로킹 제거로 앱 성능 전반 향상</li>
+                    <li>
+                      오프라인 환경 지원, 서버 API 호출 수 대폭 감소 → 트래픽 및
+                      비용 최적화
+                    </li>
+                  </ul>
                 </div>
+              </div>
             </div>
-        </div>
 
-        <div class="project" data-project="복지찬스">
-            <div class="project-header">
-                <div class="project-point">복지찬스</div>
-                <h3 class="project-title">OTA 업데이트 (EAS Updates)를 활용한 긴급 버그 대응</h3>
-            </div>
-            <div class="project-content">
-                <h4>적용 배경</h4>
-                <ul>
-                    <li>스토어 심사 없이 JS 레벨 수정 사항을 즉시 사용자에게 배포할 필요</li>
-                    <li>운영 중 발견되는 경미하지만 긴급한 이슈에 대해 스토어 심사 대기 없이 대응 요구</li>
-                </ul>
-                <h4>적용 방식</h4>
-                <ul>
-                    <li>OTA 적용 범위 명확화: JS 코드 수정으로 해결 가능한 이슈만 OTA 대상으로 한정</li>
-                    <li>환경별 업데이트 채널 분리 운영: preview / release 환경으로 분리</li>
-                    <li>스토어 배포와 OTA 역할 분리</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>JS 수정으로 해결 가능한 이슈를 즉시 사용자에게 반영</li>
-                        <li>긴급 버그 대응 시 스토어 심사 의존도 감소</li>
-                        <li>preview → release 단계적 OTA 배포로 운영 리스크 최소화 및 배포 안정성 확보</li>
-                    </ul>
+            <!-- 3. SQLite -->
+            <div class="project-card" id="bbt-sqlite" onclick="toggle(this)">
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag">아키텍처</div>
+                  <div class="pc-title">
+                    Offline 지원 및 성능 개선을 위한 SQLite 도입
+                  </div>
+                  <div class="pc-summary">
+                    서버 API 의존도를 낮추고 로컬 우선(Local-First) 아키텍처
+                    구현. 오프라인 환경에서도 안정적인 UX 제공.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">오프라인 지원</span>
+                    <span class="pc-result-chip">API 호출 대폭 감소</span>
+                    <span class="pc-result-chip">UI 일관성 확보</span>
+                  </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="project" data-project="복지찬스">
-            <div class="project-header">
-                <div class="project-point">복지찬스</div>
-                <h3 class="project-title">개발·배포·운영 전반의 프로세스 자동화 및 표준화</h3>
-            </div>
-            <div class="project-content">
-                <h4>핵심 구현</h4>
-                <ul>
-                    <li><strong>Fastlane 활용한 Android / iOS 스토어 배포 자동화:</strong> 스토어 심사 제출 과정을 단일 명령 기반으로 표준화, 릴리즈 담당자 의존성 제거</li>
-                    <li><strong>Notion MCP 기반 문서 중심 개발 및 협업 규칙 표준화:</strong> API 명세를 Single Source of Truth로 정의, 개발 → 문서 → 릴리즈까지 일관되게 동작하는 운영 체계 구축</li>
-                </ul>
-                <div class="project-result">
-                    <h4>결과</h4>
-                    <ul>
-                        <li>배포 안정성과 운영 리스크 감소를 동시에 확보</li>
-                        <li>문서와 코드 간 불일치 문제를 구조적으로 예방</li>
-                        <li>향후 신규 팀원이 합류하더라도 빠르게 이해할 수 있는 협업 시스템 기반 마련</li>
-                    </ul>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">개선 전 vs 후</div>
+                  <ul class="detail-items">
+                    <li>
+                      <strong>기존:</strong> 화면 진입 시마다 서버 API 호출 →
+                      로딩 지연 및 불필요한 네트워크 요청 다수 발생
+                    </li>
+                    <li>
+                      <strong>개선:</strong> 로컬 DB에 데이터 저장 후 UI는 로컬
+                      DB 우선 조회. 서버 호출은 비동기 처리로 UX 지연 최소화
+                    </li>
+                  </ul>
                 </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>오프라인 상태에서도 주요 기능 정상 동작 보장</li>
+                    <li>서버 API 호출 횟수 및 트래픽 대폭 감소</li>
+                    <li>
+                      실시간 데이터 변경 시 로컬 DB + React Query 캐시 동기화로
+                      UI 일관성 확보
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+
+            <!-- 4. 알림 -->
+            <div class="project-card" id="bbt-notif" onclick="toggle(this)">
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag">시스템 설계</div>
+                  <div class="pc-title">분산 알림 시스템 설계</div>
+                  <div class="pc-summary">
+                    포그라운드는 WebSocket + notifee, 백그라운드는 FCM으로 분리.
+                    TypeScript 타입 정의로 알림 구조 엄격 관리.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">FCM 리소스 절감</span>
+                    <span class="pc-result-chip">포그라운드 속도 개선</span>
+                    <span class="pc-result-chip">유지보수성 향상</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">문제</div>
+                  <ul class="detail-items">
+                    <li>
+                      모든 알림을 FCM으로 통일 처리 → 포그라운드에서도
+                      불필요하게 FCM 경유
+                    </li>
+                    <li>
+                      알림 타입이 다양해질수록 구조 복잡도 증가, 유지보수 어려움
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">해결 방안</div>
+                  <ul class="detail-items">
+                    <li>
+                      <strong>분산 처리:</strong> 포그라운드 – WebSocket 수신 후
+                      로컬 알림(notifee) 즉시 표시 / 백그라운드 – FCM 푸시 수신
+                    </li>
+                    <li>
+                      <strong>TypeScript 구조화:</strong>
+                      <code>NotificationClickEvent</code>,
+                      <code>NotificationListType</code> 등 알림 소스·타입별
+                      인터페이스 설계 → 컴파일 단계에서 오류 사전 차단
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>포그라운드 알림 속도 개선 및 FCM 리소스 절감</li>
+                    <li>다양한 알림 타입에도 일관된 구조 유지</li>
+                    <li>
+                      TypeScript 기반 엄격한 타입 관리로 유지보수 부담 감소 및
+                      확장성 확보
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. E2E 테스트 -->
+            <div class="project-card" id="bbt-e2e" onclick="toggle(this)">
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag">테스트</div>
+                  <div class="pc-title">
+                    인증/인가 E2E 테스트 자동화 (Detox)
+                  </div>
+                  <div class="pc-summary">
+                    QA 인력 없이도 인증 핵심 플로우를 자동 검증. "리팩터링이
+                    두려운 코드"를 "변경 가능한 코드"로 전환.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">회귀 수분 내 확인</span>
+                    <span class="pc-result-chip">flaky 테스트 제거</span>
+                    <span class="pc-result-chip">커뮤니케이션 비용 감소</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">테스트를 작성한 실무적 이유</div>
+                  <ul class="detail-items">
+                    <li>
+                      인증 플로우는 모든 유저가 거치는 핵심 경로 - 깨지면 서비스
+                      신뢰도에 직접 타격
+                    </li>
+                    <li>
+                      매 배포마다 동일 시나리오를 수동 반복하는 비생산적 작업을
+                      자동화
+                    </li>
+                    <li>
+                      Form validation·API 에러 처리를 시나리오로 고정 → "의도한
+                      UX"를 테스트 코드로 문서화
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">실무에서 겪은 문제 & 해결</div>
+                  <ul class="detail-items">
+                    <li>
+                      <strong>플랫폼별 UI 동작 차이:</strong> iOS/Android 키보드
+                      노출·스크롤 차이로 테스트 실패 → UI 상태 기반 테스트로
+                      전환, "기기 의존적"에서 "상태 기반"으로 변경
+                    </li>
+                    <li>
+                      <strong>flaky 테스트:</strong> API 응답 지연 + 애니메이션
+                      타이밍 불일치 → 고정 delay 제거, API 응답 안정화 시점
+                      기준으로 테스트 진행 → CI 환경에서도 안정적 통과
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>배포 전 인증 기능 회귀 여부를 수 분 내 확인 가능</li>
+                    <li>
+                      테스트 실패 지점이 UI 문제인지 API 문제인지 명확히 →
+                      불필요한 커뮤니케이션 감소
+                    </li>
+                    <li>
+                      QA 인력 없이도 핵심 유저 플로우에 대한 엔터프라이즈 수준의
+                      안정성 확보
+                    </li>
+                  </ul>
+                </div>
+                <div class="quote-box">
+                  "테스트를 작성한 이유는 버그를 찾기 위해서가 아니라,
+                  리팩터링과 배포를 두려움 없이 할 수 있는 환경을 만들기
+                  위해서였습니다."
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Tech Stack Section -->
-    <section id="tech" class="tech-stack">
-        <h2 class="section-title">기술 스택</h2>
-
-        <div class="tech-category">
-            <h3>Frontend</h3>
-            <div class="tech-tags">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">React Native</span>
-                <span class="tech-tag">Expo</span>
+      <!-- ── 복지찬스 프로젝트 ── -->
+      <div class="section" id="bokji">
+        <div class="section-grid">
+          <div class="section-label">복지찬스</div>
+          <div>
+            <div class="project-section-title violet">
+              <span>실무 프로젝트 상세 - 복지찬스</span>
             </div>
+
+            <!-- 1. 만보기 SSOT -->
+            <div
+              class="project-card violet"
+              id="bokji-ssot"
+              onclick="toggle(this)"
+            >
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag violet">아키텍처</div>
+                  <div class="pc-title">
+                    만보기 서비스 - SSOT 기반 아키텍처 재설계
+                  </div>
+                  <div class="pc-summary">
+                    Foreground Service 알림창 UI 추가로 발생한 데이터 정합성
+                    문제. StepCounterManager 싱글톤 + useSyncExternalStore로
+                    해결.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">알림창/앱 UI 불일치 해결</span>
+                    <span class="pc-result-chip">위젯·워치 확장 가능</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">아키텍처 전체 설계</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Android Native Module(AOSPedometer) 작성 - Foreground
+                      Service 걸음수 콜백 → RN 브리지 전달
+                    </li>
+                    <li>
+                      Room DB · DAO · Repository 레이어 설계 및
+                      StepCounterManager 코루틴 기반 데이터 동기화 구현
+                    </li>
+                    <li>
+                      재부팅 감지 BroadcastReceiver 방어코드로 서비스 재시작 시
+                      걸음수 유실 방지
+                    </li>
+                    <li>
+                      SSOT 아키텍처로 네이티브↔RN 간 걸음수 데이터 단일 출처
+                      확보
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">문제의 발단</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>신규 요구사항:</strong> 앱이 꺼져 있어도 Android
+                      알림창(Foreground Service)에 걸음 수 실시간 표시
+                    </li>
+                    <li>
+                      <strong>발생 문제:</strong> 알림창 UI와 앱 화면이 각자
+                      데이터를 처리 → 걸음 수 불일치(데이터 정합성 문제)
+                    </li>
+                    <li>
+                      JS 레벨과 Native 레벨이 얽혀 기능 추가할 때마다 싱크 코드
+                      중복, 관리 불가 상태에 도달
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">SSOT 아키텍처 설계</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>Native Layer:</strong>
+                      <code>StepCounterManager</code> 싱글톤 도입.
+                      Service·Module은 이 매니저를 '구독'만 하는 형태로 관심사
+                      분리
+                    </li>
+                    <li>
+                      <strong>JS Layer:</strong> 고빈도 데이터를 React 렌더링
+                      엔진과 분리하기 위해
+                      <code>useSyncExternalStore</code> 도입
+                    </li>
+                    <li>
+                      <strong>데이터 흐름 단방향화:</strong> Service → DB →
+                      React Native 방향으로 정리, 포그라운드 진입 시 DB 기준으로
+                      UI 재동기화
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>알림창 / 앱 UI 간 걸음 수 불일치 완전 해결</li>
+                    <li>앱 재실행, 백그라운드 복귀 시에도 일관된 상태 유지</li>
+                    <li>
+                      위젯·워치 연동 요구사항이 와도 매니저만 연결하면 되는
+                      <strong>확장성</strong> 확보
+                    </li>
+                  </ul>
+                </div>
+                <div class="quote-box">
+                  "기능의 확장은 아키텍처의 견고함을 시험하는 계기였습니다." -
+                  네이티브와 JS 레이어 간의 명확한 역할 분담(Separation of
+                  Concerns)의 중요성을 깊이 깨달았습니다.
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. 네이티브 만보기 엔진 -->
+            <div
+              class="project-card violet"
+              id="bokji-pedometer"
+              onclick="toggle(this)"
+            >
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag violet">네이티브</div>
+                  <div class="pc-title">
+                    네이티브 만보기 엔진 설계 - 삼성헬스·토스 벤치마킹
+                  </div>
+                  <div class="pc-summary">
+                    구글 헬스킷 의존성을 걷어내고 Hardware Sensor API를 직접
+                    제어하는 자체 만보기 엔진 설계. OOM·재부팅 등 실환경 변수를
+                    전방위 대응하여 24시간 끊김 없는 서비스 구현.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip"
+                      >삼성헬스·토스 동일 정확도</span
+                    >
+                    <span class="pc-result-chip">24시간 서비스 안정성</span>
+                    <span class="pc-result-chip">재부팅 후 걸음수 유지</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">벤치마킹 및 목표</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      삼성헬스·토스 앱 만보기 동작 방식 분석 → 하드웨어 센서 API
+                      기반 자체 구현으로 동일 정확도 달성
+                    </li>
+                    <li>
+                      구글 헬스킷 외부 의존성 제거 → Native Sensor API 직접
+                      제어로 플랫폼 종속성 해소
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">24시간 서비스 안정성</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>START_STICKY:</strong> 시스템이 메모리 부족으로
+                      서비스를 종료하더라도 여유 시 자동 재시작 보장
+                    </li>
+                    <li>
+                      <strong>OOM 방지:</strong> 만보기 포그라운드 서비스를
+                      최우선 순위로 유지 - 리소스 부족 환경에서도 서비스 생존
+                    </li>
+
+                    <li>
+                      <strong>OS 버전별 분기:</strong> Android 10(Q)
+                      <code>ACTIVITY_RECOGNITION</code> 권한 대응, Android 14/15
+                      백그라운드 작업 제약 준수
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">걸음수 정확성 보장</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>재부팅 대응:</strong> Native 센서 API는 재부팅 후
+                      누적 걸음수를 리셋 → 자체 DB 로직으로 이전 값을 보존해
+                      연속성 유지
+                    </li>
+                    <li>
+                      <strong>날짜 변경 감지:</strong> 자정 기준 걸음수 자동
+                      초기화 처리
+                    </li>
+                    <li>
+                      <strong>백그라운드 재진입:</strong> 앱 재진입 시 서비스
+                      누적값을 기준으로 JS 레이어 상태 보정
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">UX & 데이터 파이프라인</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>실시간 UI 반영:</strong>
+                      <code>DeviceEventEmitter</code>로 서비스 → JS 즉시 전달,
+                      앱 진입 시 걸음수 애니메이션 끊김 없음
+                    </li>
+                    <li>
+                      <strong>노티피케이션 설계:</strong> 포그라운드 서비스 유지
+                      알림에 현재 걸음수 실시간 표시 - 토스 방식 채택으로 거부감
+                      없는 UX 구현
+                    </li>
+                    <li>
+                      <strong>DB 마이그레이션:</strong> 앱 업데이트 시 기존
+                      수개월 치 걸음수 유실 방지 - SQLite 스키마 버전 관리 적용
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>
+                      삼성헬스·토스와 동일한 하드웨어 센서 API 기반으로 걸음수
+                      정확도 일치 확인
+                    </li>
+                    <li>
+                      재부팅, OOM 등 실환경 변수 전방위 대응으로 24시간 서비스
+                      안정성 확보
+                    </li>
+                    <li>
+                      Native → JS 레이어 실시간 파이프라인으로 끊김 없는 걸음수
+                      애니메이션 경험 제공
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Crashlytics -->
+            <div
+              class="project-card violet"
+              id="bokji-crashlytics"
+              onclick="toggle(this)"
+            >
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag violet">모니터링</div>
+                  <div class="pc-title">
+                    만보기 서비스 - Firebase Crashlytics 기반 ANR 모니터링 체계
+                    구축
+                  </div>
+                  <div class="pc-summary">
+                    실사용자 1만 명 규모 애플리케이션에 만보기 서비스를 도입하여
+                    6개월간 유지보수·안정화. Release 빌드에서만 재현되는
+                    크래시는 Crashlytics 없이 원인 특정 불가. 회원사·사용자 정보
+                    포함 리포트 구조 설계.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip"
+                      >실사용자 1만 명 · 6개월 운영</span
+                    >
+                    <span class="pc-result-chip">크래시·ANR 발생률 감소</span>
+                    <span class="pc-result-chip">이슈 원인 특정 속도 향상</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">핵심 인사이트</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Release 빌드에서만 재현되는 크래시는 Crashlytics 없이 원인
+                      특정 불가 → 모니터링 환경 구축이 필수
+                    </li>
+                    <li>
+                      이 서비스는 회원사마다 사용자 데이터·지원 기능이 달라,
+                      크래시 발생 시
+                      <strong>사용자 정보 + 회원사 정보를 함께 제출</strong>하는
+                      구조로 설계
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">문제</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Android 12+ 환경에서
+                      <code>ForegroundServiceStartNotAllowedException</code> 등
+                      비정상 종료·ANR 지속 발생
+                    </li>
+                    <li>
+                      네이티브 코드 수정 시 영향 범위 파악 어려움 → 크래시 발생
+                      빈도 증가
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">대응 프로세스</div>
+                  <ul class="detail-items violet">
+                    <li>Crashlytics를 통해 ANR / 크래시 탐지</li>
+                    <li>스택 트레이스 분석으로 문제 코드 식별</li>
+                    <li>Android Studio Logcat / Profiler로 재현</li>
+                    <li>
+                      Android OS 버전별 Foreground Service 실행 정책 분기 처리
+                    </li>
+                    <li>단계적 수정 후 재배포 및 재모니터링</li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>
+                      Foreground Service 관련 크래시 및 ANR 발생률 유의미하게
+                      감소
+                    </li>
+                    <li>Android 12+ 환경에서 서비스 안정성 확보</li>
+                    <li>
+                      회원사/사용자 정보 포함 크래시 리포트로 이슈 원인 특정
+                      속도 대폭 향상
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. SDK 마이그레이션 -->
+            <div
+              class="project-card violet"
+              id="bokji-sdk"
+              onclick="toggle(this)"
+            >
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag violet">마이그레이션</div>
+                  <div class="pc-title">
+                    구글 최신 정책 대응 - Expo SDK 마이그레이션 (v51 → v53)
+                  </div>
+                  <div class="pc-summary">
+                    Android 15 대응 및 New Architecture(Bridge→JSI+Fabric) 전환.
+                    16KB 페이지 크기 환경 대응까지 포함.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">Play 정책 준수</span>
+                    <span class="pc-result-chip">앱 응답 속도 개선</span>
+                    <span class="pc-result-chip">배포 안정성 확보</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">배경</div>
+                  <ul class="detail-items violet">
+                    <li>Google Play 정책: Android 15(API 35) 타겟팅 의무화</li>
+                    <li>
+                      Expo SDK 53 기본 설정: React Native New Architecture
+                      (Fabric + TurboModules) 활성화
+                    </li>
+                    <li>향후 도입될 16KB 페이지 크기 환경 대응 필요</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">수행 내용</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>New Architecture 전환:</strong> Bridge 방식에서
+                      JSI 기반 동기식 네이티브 호출로 전환 → 비동기 브릿지 병목
+                      해소, 앱 응답 속도 개선
+                    </li>
+                    <li>
+                      <strong>Fabric Renderer:</strong> UI 렌더링 방식 전환으로
+                      레이아웃 이슈 점검 및 성능 이득 확인
+                    </li>
+                    <li>
+                      <strong>16KB 페이지 지원:</strong> 네이티브 종속성 전수
+                      조사 및 메모리 정렬 이슈 해결
+                    </li>
+                    <li>
+                      <strong>마이그레이션 관리:</strong>
+                      <code>expo-upgrade-helper</code> 기반 체계적 업데이트, 뉴
+                      아키텍처에서 Breaking Changes 서드파티 라이브러리 선별 후
+                      대체·리팩토링
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>Google Play 배포 규정 준수 및 최신 OS 호환성 확보</li>
+                    <li>JSI 기반 네이티브 호출로 앱 응답 속도 개선</li>
+                    <li>
+                      메이저 업데이트 후 Breaking Changes 즉각 수정 → 사용자
+                      이탈 없는 서비스 운영
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. 배포 자동화 -->
+            <div
+              class="project-card violet"
+              id="bokji-deploy"
+              onclick="toggle(this)"
+            >
+              <div class="pc-header">
+                <div>
+                  <div class="pc-tag violet">DevOps</div>
+                  <div class="pc-title">
+                    배포 및 운영 자동화 - 빌드 파이프라인 현대화
+                  </div>
+                  <div class="pc-summary">
+                    EAS Build + OTA Updates + Fastlane으로 개발→문서→릴리즈 전
+                    주기 자동화. 단순 수정 배포 시간 수일 → 수 분으로 단축.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">수일 → 수 분 (OTA)</span>
+                    <span class="pc-result-chip">환경 차이 오류 0%</span>
+                    <span class="pc-result-chip">담당자 의존성 제거</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">문제 상황</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      여러 협업 업체별로 환경이 달라 로컬 빌드 시 휴먼 에러 위험
+                      높음
+                    </li>
+                    <li>
+                      JS 코드 수정 한 줄에도 스토어 심사 전체 과정 반복 →
+                      업데이트 주기 장기화
+                    </li>
+                    <li>
+                      스토어 콘솔 수동 업로드 및 메타데이터 수기 입력으로 개발자
+                      공수 낭비
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">해결 방안</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>EAS 클라우드 빌드:</strong>
+                      <code>eas.json</code>으로 업체별/환경별 빌드 프로필 코드
+                      관리 → 환경 불일치·휴먼 에러 원천 차단
+                    </li>
+                    <li>
+                      <strong>OTA 업데이트 (EAS Updates):</strong> JS 레벨
+                      수정은 스토어 심사 없이 즉시 반영.
+                      <code>preview → release</code> 단계적 배포로 리스크 최소화
+                    </li>
+                    <li>
+                      <strong>Fastlane 자동화:</strong> EAS(빌드/업로드) +
+                      Fastlane(심사 제출·트랙 관리) 역할 분리 → 단일 명령으로
+                      Android/iOS 심사 제출
+                    </li>
+                    <li>
+                      <strong>Notion MCP 문서 자동화:</strong> 기능 개발 완료 시
+                      API, 변경 사항이 Notion에 자동 기록되는 워크플로우 구축
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>
+                      단순 수정 배포 시간: 수일(심사 기간) → 수 분(OTA)으로 단축
+                    </li>
+                    <li>
+                      빌드 환경을 코드로 관리 → '환경 차이로 인한 크래시' 원천
+                      차단
+                    </li>
+                    <li>
+                      릴리즈 담당자 개인 의존성 제거 → 배포 안정성과 운영 리스크
+                      동시 감소
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="tech-category">
-            <h3>Backend</h3>
-            <div class="tech-tags">
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Express</span>
-                <span class="tech-tag">NestJS</span>
-                <span class="tech-tag">Prisma</span>
+      <!-- ── 기술 스택 ── -->
+      <div class="section" id="skills">
+        <div class="section-grid">
+          <div class="section-label">기술 스택</div>
+          <div class="skill-rows">
+            <div class="skill-row">
+              <div class="skill-cat">핵심</div>
+              <div class="skill-tags">
+                <span class="skill-tag key">React Native</span>
+                <span class="skill-tag key">React</span>
+                <span class="skill-tag key">TypeScript</span>
+                <span class="skill-tag key">JavaScript</span>
+              </div>
             </div>
+            <div class="skill-row">
+              <div class="skill-cat">Frontend</div>
+              <div class="skill-tags">
+                <span class="skill-tag">HTML / CSS</span>
+                <span class="skill-tag">TailwindCSS</span>
+                <span class="skill-tag">Styled-components</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-cat">상태 관리</div>
+              <div class="skill-tags">
+                <span class="skill-tag key">React Query</span>
+                <span class="skill-tag">Zustand</span>
+                <span class="skill-tag">Jotai</span>
+                <span class="skill-tag">Redux</span>
+                <span class="skill-tag">Recoil</span>
+                <span class="skill-tag">React Hook Form</span>
+                <span class="skill-tag">Zod</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-cat">모바일</div>
+              <div class="skill-tags">
+                <span class="skill-tag key">Expo / EAS</span>
+                <span class="skill-tag">Fastlane</span>
+                <span class="skill-tag">Android Studio</span>
+                <span class="skill-tag">Xcode</span>
+                <span class="skill-tag">Native Modules</span>
+                <span class="skill-tag">SQLite</span>
+                <span class="skill-tag">Firebase</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-cat">Backend</div>
+              <div class="skill-tags">
+                <span class="skill-tag">NestJS</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Express</span>
+                <span class="skill-tag">Prisma</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-cat">API / 통신</div>
+              <div class="skill-tags">
+                <span class="skill-tag key">GraphQL</span>
+                <span class="skill-tag">REST API</span>
+                <span class="skill-tag">WebSocket</span>
+                <span class="skill-tag">STOMP</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-cat">Database</div>
+              <div class="skill-tags">
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">MongoDB</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-cat">테스트</div>
+              <div class="skill-tags">
+                <span class="skill-tag key">Detox</span>
+                <span class="skill-tag">Jest</span>
+                <span class="skill-tag">Vitest</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-cat">도구</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Claude</span>
+                <span class="skill-tag">Cursor</span>
+                <span class="skill-tag">VSCode</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="tech-category">
-            <h3>Database</h3>
-            <div class="tech-tags">
-                <span class="tech-tag">MySQL</span>
-                <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">MongoDB</span>
+      <!-- ── 사이드 프로젝트 ── -->
+      <div class="section" id="side">
+        <div class="section-grid">
+          <div class="section-label">사이드 프로젝트</div>
+          <div>
+            <div class="side-list">
+              <div class="side-item">
+                <div>
+                  <div class="side-title">웹 보안 취약점 실습 프로젝트</div>
+                  <div class="side-desc">
+                    <ul
+                      style="
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        margin-top: 5px;
+                      "
+                    >
+                      <li>
+                        의도적 취약 앱을 직접 설계·구현해 XSS·CSRF·SQLinjection
+                        등 웹 공격 시나리오를 재현하는 보안 학습 프로젝트
+                      </li>
+                      <li>
+                        JWT/localStorage → Session → HttpOnly Cookie → Hybrid
+                        RT까지 4단계 인증 방식별 취약점 공격·분석·방어 실습
+                      </li>
+                      <li>
+                        Next.js + NestJS 풀스택 + Docker 환경에서 공격자
+                        서버까지 직접 구성하여 실전형 시나리오 구현
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="side-period">2026.03 –<br />진행 중</div>
+              </div>
+
+              <div class="side-item">
+                <div>
+                  <div class="side-title">펫시터 Web &amp; Server</div>
+                  <div class="side-desc">
+                    <ul
+                      style="
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        margin-top: 5px;
+                      "
+                    >
+                      <li>
+                        반려동물 돌봄 매칭 서비스. NestJS + Prisma + GraphQL
+                        풀스택 개발
+                      </li>
+                      <li>문서 주도 개발(API 명세 → 코드 순서) 방식 도입</li>
+                      <li>
+                        Claude Subagents 활용: API 연동·에러 핸들링·컴포넌트
+                        관심사 분리·디자인 시스템 규칙 체계화
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="side-period">2026.02 –<br />진행 중</div>
+              </div>
+
+              <div class="side-item">
+                <div>
+                  <div class="side-title">4:4 매칭 서비스 '핑퐁' App</div>
+                  <div class="side-desc">
+                    <ul
+                      style="
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        margin-top: 5px;
+                      "
+                    >
+                      <li>4명씩 팀을 이뤄 매칭되는 소셜 앱</li>
+                      <li>
+                        WebSocket 기반 실시간 매칭·채팅 시스템, 채팅 내 미니게임
+                        구현
+                      </li>
+                      <li>
+                        시간 기반 매칭 단계별 스테이징 처리 (상태 머신 설계)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="side-period">2024.10 –<br />2025.08</div>
+              </div>
+
+              <div class="side-item">
+                <div>
+                  <div class="side-title">AI 운동 상담 챗봇 '홈메이트' Web</div>
+                  <div class="side-desc">
+                    <ul
+                      style="
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        margin-top: 5px;
+                      "
+                    >
+                      <li>GPT API 연동 개인 맞춤형 운동 상담 챗봇</li>
+                      <li>Service Worker 기반 Web Push 알림 구현</li>
+                      <li>PWA 구성으로 모바일 앱 설치 지원</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="side-period">2024.02 –<br />2024.03</div>
+              </div>
+
+              <div class="side-item">
+                <div>
+                  <div class="side-title">대학교 중고거래 서비스 Web</div>
+                  <div class="side-desc">
+                    <ul
+                      style="
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        margin-top: 5px;
+                      "
+                    >
+                      <li>대학생 대상 캠퍼스 내 중고 거래 플랫폼</li>
+                      <li>OAuth 소셜 로그인 구현</li>
+                      <li>
+                        카카오 주소 검색 + 지오코딩을 통한 거래 위치 기능 지원
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="side-period">2023.02 –<br />2023.09</div>
+              </div>
+
+              <div class="side-item">
+                <div>
+                  <div class="side-title">
+                    멋쟁이사자처럼 10기 해커톤 3회 참여
+                  </div>
+                  <div class="side-desc" style="margin-top: 5px">
+                    기획부터 개발까지 단기 해커톤 전 과정 참여. 팀 협업 및 빠른
+                    프로토타이핑 경험.
+                  </div>
+                </div>
+                <div class="side-period"></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="tech-category">
-            <h3>API / 통신</h3>
-            <div class="tech-tags">
-                <span class="tech-tag">GraphQL</span>
+      <!-- ── 연락처 ── -->
+      <div class="section footer-contact" id="contact">
+        <div class="section-grid">
+          <div class="section-label">연락처</div>
+          <div>
+            <div class="footer-contact-title">함께 일하고 싶으시다면</div>
+            <div class="footer-contact-sub">
+              언제든지 연락 주세요. 빠르게 답변드리겠습니다.
             </div>
+            <div class="contact-list">
+              <div class="contact-row">
+                <span class="contact-row-label">Email</span>
+                <a href="mailto:ckeh08270827@gmail.com"
+                  >ckeh08270827@gmail.com</a
+                >
+              </div>
+              <div class="contact-row">
+                <span class="contact-row-label">Phone</span>
+                <span>010-7607-9182</span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-row-label">GitHub</span>
+                <a
+                  href="https://github.com/bookhabit"
+                  target="_blank"
+                  rel="noopener"
+                  >github.com/bookhabit</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="tech-category">
-            <h3>State Management</h3>
-            <h4>Form 상태 관리</h4>
-            <div class="tech-tags">
-                <span class="tech-tag">React Hook Form</span>
-                <span class="tech-tag">Zod</span>
-            </div>
-            <h4>전역 상태 관리</h4>
-            <div class="tech-tags">
-                <span class="tech-tag">Redux</span>
-                <span class="tech-tag">Jotai</span>
-                <span class="tech-tag">Zustand</span>
-                <span class="tech-tag">Recoil</span>
-            </div>
-            <h4>서버 상태 관리</h4>
-            <div class="tech-tags">
-                <span class="tech-tag">React Query</span>
-            </div>
-        </div>
-
-        <div class="tech-category">
-            <h3>Styling</h3>
-            <div class="tech-tags">
-                <span class="tech-tag">TailwindCSS</span>
-                <span class="tech-tag">MUI</span>
-                <span class="tech-tag">Styled-components</span>
-            </div>
-        </div>
-
-        <div class="tech-category">
-            <h3>Testing</h3>
-            <div class="tech-tags">
-                <span class="tech-tag">Jest</span>
-                <span class="tech-tag">Detox</span>
-            </div>
-        </div>
-
-        <div class="tech-category">
-            <h3>Tools</h3>
-            <div class="tech-tags">
-                <span class="tech-tag">Docker</span>
-                <span class="tech-tag">Cursor</span>
-                <span class="tech-tag">VSCode</span>
-                <span class="tech-tag">Xcode</span>
-                <span class="tech-tag">Android Studio</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 포트폴리오. All rights reserved.</p>
-    </footer>
+      </div>
+    </div>
+    <!-- /page -->
 
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+      // 스크롤 프로그레스 바
+      const progressBar = document.getElementById("progress-bar");
+      window.addEventListener("scroll", () => {
+        const scrolled = window.scrollY;
+        const total =
+          document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrolled / total) * 100 + "%";
+      });
+
+      // 아코디언 토글
+      function toggle(card) {
+        const isOpen = card.classList.contains("open");
+        card.classList.toggle("open", !isOpen);
+      }
+
+      // 경력 섹션 불릿 클릭 시 해당 카드로 이동 + 자동 열기
+      function openCardByHash(hash) {
+        if (!hash) return;
+        const card = document.querySelector(hash);
+        if (card && card.classList.contains("project-card")) {
+          card.classList.add("open");
+          setTimeout(
+            () => card.scrollIntoView({ behavior: "smooth", block: "start" }),
+            50,
+          );
+        }
+      }
+
+      document
+        .querySelectorAll(".career-item-link, .hero-trait-link")
+        .forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            openCardByHash(link.getAttribute("href"));
+          });
         });
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all projects
-        document.querySelectorAll('.project').forEach(project => {
-            observer.observe(project);
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+      // 페이지 로드 시 hash가 카드 ID라면 자동 열기
+      if (window.location.hash) {
+        window.addEventListener("load", () =>
+          openCardByHash(window.location.hash),
+        );
+      }
     </script>
-</body>
+  </body>
 </html>
