@@ -9,6 +9,10 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
     <style>
       /* ── Reset & Variables ───────────────────────── */
       *,
@@ -279,6 +283,16 @@
         position: sticky;
         top: 72px;
         align-self: start;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .section-label img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        border-radius: 4px;
+        flex-shrink: 0;
       }
 
       /* ── Career ──────────────────────────────────── */
@@ -307,6 +321,10 @@
         display: flex;
         align-items: flex-start;
         gap: 12px;
+      }
+      .career-proj-desc ul {
+        padding-left: 1.5em;
+        margin-top: 2px;
       }
       .career-proj-badge {
         flex-shrink: 0;
@@ -604,6 +622,18 @@
         background: var(--bg);
         transition: all 0.2s;
         white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .skill-tag i {
+        font-size: 1.1em;
+        line-height: 1;
+      }
+      .skill-tag img {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
       }
       .skill-tag:hover {
         border-color: var(--accent-mid);
@@ -687,7 +717,7 @@
       .contact-row {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 30px;
         font-size: var(--fs-14);
       }
       .contact-row-label {
@@ -697,6 +727,15 @@
         text-transform: uppercase;
         color: var(--text-3);
         width: 56px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .contact-row-label svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        color: var(--text-3);
       }
       .contact-row a {
         color: var(--accent);
@@ -785,7 +824,7 @@
         </li>
         <li>
           <a href="#bokji-pedometer" class="hero-trait-link"
-            >네이티브 만보기 엔진 설계 및 개발 (삼성헬스·토스 벤치마킹)</a
+            >네이티브 엔진 설계 및 개발 (삼성헬스·토스 벤치마킹)</a
           >
         </li>
         <li>
@@ -827,22 +866,23 @@
                         >만보기 서비스 구현 및 포인트 지급 제도로 MAU 300%
                         증가</a
                       >
-                    </li>
-                    <li>
-                      <a href="#bokji-ssot" class="career-item-link"
-                        >만보기 서비스 - SSOT 기반 아키텍처 재설계</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#bokji-pedometer" class="career-item-link"
-                        >네이티브 만보기 엔진 설계 - 삼성헬스·토스 벤치마킹</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#bokji-crashlytics" class="career-item-link"
-                        >만보기 서비스 - Firebase Crashlytics 기반 ANR 모니터링
-                        체계 구축</a
-                      >
+                      <ul>
+                        <li>
+                          <a href="#bokji-ssot" class="career-item-link"
+                            >SSOT 기반 아키텍처 재설계</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#bokji-pedometer" class="career-item-link"
+                            >네이티브 엔진 설계 - 삼성헬스·토스 벤치마킹</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#bokji-crashlytics" class="career-item-link"
+                            >Firebase Crashlytics 기반 ANR 모니터링 체계 구축</a
+                          >
+                        </li>
+                      </ul>
                     </li>
                     <li>
                       <a href="#bokji-sdk" class="career-item-link"
@@ -908,7 +948,7 @@
       <!-- ── 비즈비톡 프로젝트 ── -->
       <div class="section" id="bizbitalk">
         <div class="section-grid">
-          <div class="section-label">비즈비톡</div>
+          <div class="section-label"><img src="img/bizbeetalk.png" alt="비즈비톡">비즈비톡</div>
           <div>
             <div class="project-section-title">
               <span>실무 프로젝트 상세 - 비즈비톡</span>
@@ -1479,7 +1519,7 @@
       <!-- ── 복지찬스 프로젝트 ── -->
       <div class="section" id="bokji">
         <div class="section-grid">
-          <div class="section-label">복지찬스</div>
+          <div class="section-label"><img src="img/bokji.png" alt="복지찬스">복지찬스</div>
           <div>
             <div class="project-section-title violet">
               <span>실무 프로젝트 상세 - 복지찬스</span>
@@ -1595,9 +1635,7 @@
               >
                 <div>
                   <div class="pc-tag violet">아키텍처</div>
-                  <div class="pc-title">
-                    만보기 서비스 - SSOT 기반 아키텍처 재설계
-                  </div>
+                  <div class="pc-title">SSOT 기반 아키텍처 재설계</div>
                   <div class="pc-summary">
                     Foreground Service 알림창 UI 추가로 발생한 데이터 정합성
                     문제. <br />
@@ -1710,8 +1748,9 @@
                   </div>
                   <div class="pc-summary">
                     OS 제약과 실환경 변수를 극복한 고정밀 걸음수 추적 시스템.
-                    외부 의존성을 제거하고 Android Native Sensor API를 직접 제어.
-                    삼성헬스·토스 벤치마킹으로 오차 범위 1% 이내 정밀도 달성.
+                    외부 의존성을 제거하고 Android Native Sensor API를 직접
+                    제어. 삼성헬스·토스 벤치마킹으로 오차 범위 1% 이내 정밀도
+                    달성.
                   </div>
                   <div class="pc-results">
                     <span class="pc-result-chip">정확도 오차 1% 이내</span>
@@ -1737,16 +1776,18 @@
                   <div class="detail-label">문제 상황</div>
                   <ul class="detail-items violet">
                     <li>
-                      <strong>의존성 리스크:</strong> 외부 라이브러리(Google Fit 등) 사용 시
-                      플랫폼 종속성이 높고 커스텀 리워드 로직 구현에 제약 발생
+                      <strong>의존성 리스크:</strong> 외부 라이브러리(Google Fit
+                      등) 사용 시 플랫폼 종속성이 높고 커스텀 리워드 로직 구현에
+                      제약 발생
                     </li>
                     <li>
-                      <strong>데이터 휘발성:</strong> Native 센서 API는 기기 재부팅·강제 종료 시
-                      누적 값이 초기화되는 물리적 한계 존재
+                      <strong>데이터 휘발성:</strong> Native 센서 API는 기기
+                      재부팅·강제 종료 시 누적 값이 초기화되는 물리적 한계 존재
                     </li>
                     <li>
-                      <strong>백그라운드 제약:</strong> Android 12~15의 배터리 최적화 정책 및
-                      포그라운드 서비스 제한으로 서비스 생존율 저하
+                      <strong>백그라운드 제약:</strong> Android 12~15의 배터리
+                      최적화 정책 및 포그라운드 서비스 제한으로 서비스 생존율
+                      저하
                     </li>
                   </ul>
                 </div>
@@ -1754,25 +1795,29 @@
                   <div class="detail-label">① Native 엔진 독자 설계</div>
                   <ul class="detail-items violet">
                     <li>
-                      외부 의존성을 제거하고 <strong>Android Native Sensor API 직접 제어</strong>
+                      외부 의존성을 제거하고
+                      <strong>Android Native Sensor API 직접 제어</strong>
                     </li>
                     <li>
-                      삼성헬스·토스 벤치마킹을 통해 가속도 센서 기반
-                      고정밀 측정 로직 구현 — 대조 테스트 결과 오차 범위 <strong>1% 이내</strong> 달성
+                      삼성헬스·토스 벤치마킹을 통해 가속도 센서 기반 고정밀 측정
+                      로직 구현 — 대조 테스트 결과 오차 범위
+                      <strong>1% 이내</strong> 달성
                     </li>
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <div class="detail-label">② 데이터 연속성 보장 — Room/SQLite Checkpoint</div>
+                  <div class="detail-label">
+                    ② 데이터 연속성 보장 — Room/SQLite Checkpoint
+                  </div>
                   <ul class="detail-items violet">
                     <li>
-                      Android Jetpack Room으로 영속성 레이어 설계 —
-                      실시간 센서값과 로컬 DB 누적치를 동기화하여
-                      재부팅 후에도 기존 걸음수 보존
+                      Android Jetpack Room으로 영속성 레이어 설계 — 실시간
+                      센서값과 로컬 DB 누적치를 동기화하여 재부팅 후에도 기존
+                      걸음수 보존
                     </li>
                     <li>
-                      자정 기준 걸음수 자동 초기화 및 앱 재진입 시
-                      서비스 누적값 기준으로 JS 레이어 상태 보정
+                      자정 기준 걸음수 자동 초기화 및 앱 재진입 시 서비스 누적값
+                      기준으로 JS 레이어 상태 보정
                     </li>
                   </ul>
                 </div>
@@ -1780,30 +1825,36 @@
                   <div class="detail-label">③ 서비스 안정성 강화</div>
                   <ul class="detail-items violet">
                     <li>
-                      <code>START_STICKY</code> 및 알림 우선순위 최적화로 서비스 생존율 극대화
+                      <code>START_STICKY</code> 및 알림 우선순위 최적화로 서비스
+                      생존율 극대화
                     </li>
                     <li>
                       Android 10(Q) <code>ACTIVITY_RECOGNITION</code> 권한,
                       Android 14/15 백그라운드 작업 제약 등 OS 버전별 분기 처리
                     </li>
                     <li>
-                      <code>DeviceEventEmitter</code>로 네이티브 데이터를 JS 레이어로
-                      즉시 브릿징 — 앱 진입 시 지연 없는 실시간 걸음수 애니메이션 제공
+                      <code>DeviceEventEmitter</code>로 네이티브 데이터를 JS
+                      레이어로 즉시 브릿징 — 앱 진입 시 지연 없는 실시간 걸음수
+                      애니메이션 제공
                     </li>
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <div class="detail-label">현재 진행 중 — 서비스 생존율 100% 고도화</div>
+                  <div class="detail-label">
+                    현재 진행 중 — 서비스 생존율 100% 고도화
+                  </div>
                   <ul class="detail-items violet">
                     <li>
-                      일부 기기의 Doze 모드·제조사별 공격적인 백그라운드 강제 종료로
-                      드문 서비스 중단 현상 확인 중
+                      일부 기기의 Doze 모드·제조사별 공격적인 백그라운드 강제
+                      종료로 드문 서비스 중단 현상 확인 중
                     </li>
                     <li>
-                      Firebase Crashlytics + 커스텀 로그로 종료 시점 기기 상태(배터리·메모리) 특정 분석 중
+                      Firebase Crashlytics + 커스텀 로그로 종료 시점 기기
+                      상태(배터리·메모리) 특정 분석 중
                     </li>
                     <li>
-                      WorkManager 기반 Self-Healing 구조(비정상 종료 시 주기적 재시작 보장) 검토·테스트 중
+                      WorkManager 기반 Self-Healing 구조(비정상 종료 시 주기적
+                      재시작 보장) 검토·테스트 중
                     </li>
                   </ul>
                 </div>
@@ -1811,7 +1862,8 @@
                   <div class="detail-label">성과</div>
                   <ul class="detail-items">
                     <li>
-                      삼성헬스·토스 대조 테스트 결과 걸음수 정확도 <strong>오차 1% 이내</strong> 달성
+                      삼성헬스·토스 대조 테스트 결과 걸음수 정확도
+                      <strong>오차 1% 이내</strong> 달성
                     </li>
                     <li>
                       1만 명 이상 실사용 환경에서 재부팅 등 주요 변수 대응으로
@@ -1835,8 +1887,7 @@
                 <div>
                   <div class="pc-tag violet">모니터링</div>
                   <div class="pc-title">
-                    만보기 서비스 - Firebase Crashlytics 기반 ANR 모니터링 체계
-                    구축
+                    Firebase Crashlytics 기반 ANR 모니터링 체계 구축
                   </div>
                   <div class="pc-summary">
                     Crashlytics 커스텀 리포팅으로 장애 대응 시간 90% 단축.
@@ -1941,12 +1992,14 @@
                     Expo SDK v51 → v53 마이그레이션 및 New Architecture 전환
                   </div>
                   <div class="pc-summary">
-                    Google Play Android 15 타겟팅 의무화에 대응하고,
-                    Bridge 방식을 JSI 기반 동기 호출로 전환하여 네이티브 모듈
-                    통신 병목 해소 및 앱 전체 응답 속도 개선.
+                    Google Play Android 15 타겟팅 의무화에 대응하고, Bridge
+                    방식을 JSI 기반 동기 호출로 전환하여 네이티브 모듈 통신 병목
+                    해소 및 앱 전체 응답 속도 개선.
                   </div>
                   <div class="pc-results">
-                    <span class="pc-result-chip">Android 15 Play 정책 준수</span>
+                    <span class="pc-result-chip"
+                      >Android 15 Play 정책 준수</span
+                    >
                     <span class="pc-result-chip">Bridge → JSI 전환</span>
                     <span class="pc-result-chip">16KB 페이지 대응 완료</span>
                   </div>
@@ -1969,32 +2022,39 @@
                   <div class="detail-label">배경 및 전환 이유</div>
                   <ul class="detail-items violet">
                     <li>
-                      <strong>규제 대응:</strong> Google Play의 Android 15(API 35)
-                      타겟팅 의무화에 따른 배포 안정성 확보 필요
+                      <strong>규제 대응:</strong> Google Play의 Android 15(API
+                      35) 타겟팅 의무화에 따른 배포 안정성 확보 필요
                     </li>
                     <li>
                       <strong>성능 한계:</strong> 기존 Bridge 방식의 비동기 통신
-                      병목을 해결하고 런타임 성능 극대화를 위해 New Architecture 전환 결정
+                      병목을 해결하고 런타임 성능 극대화를 위해 New Architecture
+                      전환 결정
                     </li>
                     <li>
-                      <strong>환경 변화:</strong> 차세대 기기의 표준이 될
-                      16KB 페이지 크기 환경에 대한 선제적 네이티브 호환성 검증 필요
+                      <strong>환경 변화:</strong> 차세대 기기의 표준이 될 16KB
+                      페이지 크기 환경에 대한 선제적 네이티브 호환성 검증 필요
                     </li>
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <div class="detail-label">① New Architecture 전환 — JSI & Fabric</div>
+                  <div class="detail-label">
+                    ① New Architecture 전환 — JSI & Fabric
+                  </div>
                   <ul class="detail-items violet">
                     <li>
                       직렬화 기반 Bridge 방식을 제거하고
-                      <strong>JSI(JavaScript Interface) 기반 동기식 네이티브 호출</strong>로 전환
+                      <strong
+                        >JSI(JavaScript Interface) 기반 동기식 네이티브
+                        호출</strong
+                      >로 전환
                     </li>
                     <li>
-                      Fabric Renderer 도입으로 복잡한 레이아웃의 렌더링 효율 개선
+                      Fabric Renderer 도입으로 복잡한 레이아웃의 렌더링 효율
+                      개선
                     </li>
                     <li>
-                      TurboModules 규격에 맞춘 커스텀 브릿지 코드 리팩터링 및
-                      뉴 아키텍처 미지원 레거시 라이브러리 대체 라이브러리로 교체
+                      TurboModules 규격에 맞춘 커스텀 브릿지 코드 리팩터링 및 뉴
+                      아키텍처 미지원 레거시 라이브러리 대체 라이브러리로 교체
                     </li>
                   </ul>
                 </div>
@@ -2002,8 +2062,8 @@
                   <div class="detail-label">② 16KB 페이지 크기 호환성 확보</div>
                   <ul class="detail-items violet">
                     <li>
-                      네이티브 종속성 라이브러리를 전수 조사하여
-                      메모리 정렬 이슈 식별
+                      네이티브 종속성 라이브러리를 전수 조사하여 메모리 정렬
+                      이슈 식별
                     </li>
                     <li>
                       호환 가능한 최신 바이너리(<code>.so</code>)로 교체 및
@@ -2019,8 +2079,8 @@
                       전략 수립
                     </li>
                     <li>
-                      회귀 테스트를 통한 Breaking Changes 즉각 검증으로
-                      서비스 무중단 안정성 확보
+                      회귀 테스트를 통한 Breaking Changes 즉각 검증으로 서비스
+                      무중단 안정성 확보
                     </li>
                   </ul>
                 </div>
@@ -2177,54 +2237,89 @@
             <div class="skill-row">
               <div class="skill-cat">핵심</div>
               <div class="skill-tags">
-                <span class="skill-tag">React Native</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag"
+                  ><i class="devicon-react-original colored"></i>React
+                  Native</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-react-original colored"></i>React</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-typescript-plain colored"></i
+                  >TypeScript</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-javascript-plain colored"></i
+                  >JavaScript</span
+                >
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">Frontend</div>
               <div class="skill-tags">
-                <span class="skill-tag">HTML / CSS</span>
-                <span class="skill-tag">TailwindCSS</span>
-                <span class="skill-tag">Styled-components</span>
+                <span class="skill-tag"
+                  ><i class="devicon-html5-plain colored"></i>HTML / CSS</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-tailwindcss-original colored"></i
+                  >TailwindCSS</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-css3-plain colored"></i
+                  >Styled-components</span
+                >
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">상태 관리</div>
               <div class="skill-tags">
-                <span class="skill-tag">React Query</span>
-                <span class="skill-tag">Zustand</span>
-                <span class="skill-tag">Jotai</span>
-                <span class="skill-tag">Redux</span>
-                <span class="skill-tag">Recoil</span>
-                <span class="skill-tag">React Hook Form</span>
-                <span class="skill-tag">Zod</span>
+                <span class="skill-tag"
+                  ><i class="devicon-react-original colored"></i>React
+                  Query</span
+                >
+                <span class="skill-tag"><img src="img/zustand.webp" alt="zustand">Zustand</span>
+                <span class="skill-tag"><img src="img/jotai.png" alt="jotai">Jotai</span>
+                <span class="skill-tag"
+                  ><i class="devicon-redux-original colored"></i>Redux</span
+                >
+                <span class="skill-tag"><img src="https://cdn.simpleicons.org/recoil" alt="recoil">Recoil</span>
+                <span class="skill-tag"><img src="img/react-hook-form.png" alt="react hook form">React Hook Form</span>
+                <span class="skill-tag"><img src="https://cdn.simpleicons.org/zod" alt="zod">Zod</span>
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">모바일</div>
               <div class="skill-tags">
-                <span class="skill-tag">Expo / EAS</span>
-                <span class="skill-tag">Fastlane</span>
-                <span class="skill-tag">Native Modules</span>
-                <span class="skill-tag">SQLite</span>
+                <span class="skill-tag"><img src="https://cdn.simpleicons.org/expo" alt="expo">Expo / EAS</span>
+                <span class="skill-tag"><img src="https://cdn.simpleicons.org/fastlane" alt="fastlane">Fastlane</span>
+                <span class="skill-tag"
+                  ><i class="devicon-sqlite-plain colored"></i>SQLite</span
+                >
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">Backend</div>
               <div class="skill-tags">
-                <span class="skill-tag">NestJS</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Express</span>
-                <span class="skill-tag">Prisma</span>
+                <span class="skill-tag"
+                  ><i class="devicon-nestjs-plain colored"></i>NestJS</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-nodejs-plain colored"></i>Node.js</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-express-original colored"></i>Express</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-prisma-original colored"></i>Prisma</span
+                >
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">API / 통신</div>
               <div class="skill-tags">
-                <span class="skill-tag">GraphQL</span>
+                <span class="skill-tag"
+                  ><i class="devicon-graphql-plain colored"></i>GraphQL</span
+                >
                 <span class="skill-tag">REST API</span>
                 <span class="skill-tag">WebSocket</span>
                 <span class="skill-tag">STOMP</span>
@@ -2233,29 +2328,51 @@
             <div class="skill-row">
               <div class="skill-cat">Database</div>
               <div class="skill-tags">
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag"
+                  ><i class="devicon-mysql-original colored"></i>MySQL</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-postgresql-plain colored"></i
+                  >PostgreSQL</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-mongodb-plain colored"></i>MongoDB</span
+                >
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">테스트</div>
               <div class="skill-tags">
                 <span class="skill-tag">Detox</span>
-                <span class="skill-tag">Jest</span>
-                <span class="skill-tag">Vitest</span>
+                <span class="skill-tag"
+                  ><i class="devicon-jest-plain colored"></i>Jest</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-vitest-plain colored"></i>Vitest</span
+                >
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">도구</div>
               <div class="skill-tags">
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Claude</span>
-                <span class="skill-tag">Cursor</span>
-                <span class="skill-tag">VSCode</span>
-                <span class="skill-tag">Android Studio</span>
-                <span class="skill-tag">Xcode</span>
-                <span class="skill-tag">Firebase</span>
+                <span class="skill-tag"
+                  ><i class="devicon-docker-plain colored"></i>Docker</span
+                >
+                <span class="skill-tag"><img src="https://cdn.simpleicons.org/claude" alt="claude">Claude</span>
+                <span class="skill-tag"><img src="https://cdn.simpleicons.org/cursor" alt="cursor">Cursor</span>
+                <span class="skill-tag"
+                  ><i class="devicon-vscode-plain colored"></i>VSCode</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-androidstudio-plain colored"></i>Android
+                  Studio</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-xcode-plain colored"></i>Xcode</span
+                >
+                <span class="skill-tag"
+                  ><i class="devicon-firebase-plain colored"></i>Firebase</span
+                >
               </div>
             </div>
           </div>
@@ -2428,17 +2545,51 @@
             </div>
             <div class="contact-list">
               <div class="contact-row">
-                <span class="contact-row-label">Email</span>
+                <span class="contact-row-label">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                  Email
+                </span>
                 <a href="mailto:ckeh08270827@gmail.com"
                   >ckeh08270827@gmail.com</a
                 >
               </div>
               <div class="contact-row">
-                <span class="contact-row-label">Phone</span>
+                <span class="contact-row-label">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6 6l.9-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"
+                    />
+                  </svg>
+                  Phone
+                </span>
                 <span>010-7607-9182</span>
               </div>
               <div class="contact-row">
-                <span class="contact-row-label">GitHub</span>
+                <span class="contact-row-label">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"
+                    />
+                  </svg>
+                  GitHub
+                </span>
                 <a
                   href="https://github.com/bookhabit"
                   target="_blank"
