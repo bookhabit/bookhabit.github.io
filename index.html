@@ -520,11 +520,10 @@
         margin-bottom: 0;
       }
       .detail-label {
-        font-size: var(--fs-11);
+        font-size: var(--fs-13);
         font-weight: 700;
         letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--text-3);
+        color: var(--text-2);
         margin-bottom: 8px;
       }
       .detail-items {
@@ -788,6 +787,37 @@
         }
       }
 
+      /* ── Before / After Image Grid ──────────────── */
+      .img-compare-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 16px 0;
+      }
+      .img-compare-item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .img-compare-label {
+        font-size: var(--fs-12);
+        font-weight: 600;
+        color: var(--text-2);
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+      .img-compare-label.before {
+        color: #d97706;
+      }
+      .img-compare-label.after {
+        color: var(--green);
+      }
+      @media (max-width: 600px) {
+        .img-compare-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       /* ── Architecture Image & Lightbox ───────────── */
       .arch-img-wrap {
         margin: 16px 0;
@@ -811,7 +841,7 @@
         bottom: 8px;
         right: 10px;
         font-size: 11px;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         color: #fff;
         padding: 3px 8px;
         border-radius: 20px;
@@ -826,7 +856,7 @@
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.85);
+        background: rgba(0, 0, 0, 0.85);
         z-index: 10000;
         align-items: center;
         justify-content: center;
@@ -841,7 +871,7 @@
         max-height: 92vh;
         object-fit: contain;
         border-radius: var(--radius);
-        box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
       }
       #lightbox-close {
         position: fixed;
@@ -851,7 +881,7 @@
         font-size: 28px;
         cursor: pointer;
         line-height: 1;
-        background: rgba(0,0,0,0.4);
+        background: rgba(0, 0, 0, 0.4);
         border-radius: 50%;
         width: 36px;
         height: 36px;
@@ -865,7 +895,12 @@
     <!-- Lightbox -->
     <div id="lightbox" onclick="closeLightbox()">
       <span id="lightbox-close" onclick="closeLightbox()">✕</span>
-      <img id="lightbox-img" src="" alt="architecture" onclick="event.stopPropagation()" />
+      <img
+        id="lightbox-img"
+        src=""
+        alt="architecture"
+        onclick="event.stopPropagation()"
+      />
     </div>
     <!-- Progress Bar -->
     <div id="progress-bar"></div>
@@ -905,8 +940,14 @@
           >
         </li>
         <li>
-          <a href="#bokji-deploy" class="hero-trait-link"
-            >기능 개발부터 배포·모니터링까지 전 주기 주도</a
+          <a href="#bokji-crashlytics" class="hero-trait-link"
+            >Crash-free 96.5% → 99.8% - 1만 명 규모 ANR 모니터링 체계 구축</a
+          >
+        </li>
+        <li>
+          <a href="#bokji-security" class="hero-trait-link"
+            >금융감독원 수검 대비 모바일 보안 고도화 - 루팅 차단·난독화·Keystore
+            계층별 대응</a
           >
         </li>
       </ul>
@@ -971,6 +1012,17 @@
                         >EAS / Fastlane 기반 배포 자동화 주도</a
                       >
                     </li>
+                    <li>
+                      <a href="#bokji-security" class="career-item-link"
+                        >금융감독원 수검 대비 모바일 앱 보안 고도화</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#bokji-perf" class="career-item-link"
+                        >앱 성능 최적화 - 번들 분석 · 런타임 병목 탐지 · React
+                        렌더링 개선</a
+                      >
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -1022,10 +1074,1199 @@
         </div>
       </div>
 
+      <!-- ── 복지찬스 프로젝트 ── -->
+      <div class="section" id="bokji">
+        <div class="section-grid">
+          <div class="section-label">
+            <img src="img/bokji.png" alt="복지찬스" />복지찬스
+          </div>
+          <div>
+            <div class="project-section-title violet">
+              <span>실무 프로젝트 상세 - 복지찬스</span>
+            </div>
+
+            <!-- 1. MAU 300% 증가 -->
+            <div class="project-card violet" id="bokji-mau">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">성장</div>
+                  <div class="pc-title">
+                    만보기 서비스 구현 및 포인트 지급 제도로 MAU 300% 증가
+                  </div>
+                  <div class="pc-summary">
+                    걸음수 기반 복지 포인트 차등 지급, 광고 리워드 구조,
+                    가맹점·온라인 사용처 연결로 앱 핵심 성장 지표를 3배 이상
+                    견인.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">MAU 300% 증가</span>
+                    <span class="pc-result-chip">리워드 구조 설계</span>
+                    <span class="pc-result-chip">실사용 체감 혜택</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ① 유저 리텐션을 위한 인센티브 구조 설계
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      단순 걸음수 측정을 넘어 목표 달성도에 따른
+                      <strong>차등 보상 시스템</strong> 구현 → 일회성 방문객을
+                      충성 사용자로 전환
+                    </li>
+                    <li>
+                      일일 목표 걸음수 달성 시 복지 포인트 즉시 지급 -
+                      게이미피케이션 요소로 앱 재방문 유도
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ② 수익 모델과 유저 혜택의 공존 (광고 리워드 구조)
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      포인트 지급 전 광고 시청 단계를 전략적으로 배치 - 서비스
+                      수익성과 유저 혜택을 동시에 확보
+                    </li>
+                    <li>
+                      포인트 적립이라는 확실한 보상을 통해 광고에 대한 유저
+                      거부감을 최소화
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ③ 온/오프라인 결제 생태계 연결 (포인트 실사용성 확보)
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      외부 결제 모듈 및 가맹점 API 연동 - 적립 포인트로 상품
+                      구매·결제 가능한 인프라 구축
+                    </li>
+                    <li>
+                      <strong>"포인트 = 현금"</strong> 인식을 심어 포인트 실사용
+                      전환율과 앱 의존도 상승
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">성과</div>
+                  <ul class="detail-items">
+                    <li>
+                      만보기 도입 전 대비 <strong>MAU 300% 상승</strong> -
+                      재방문율(Retention) 유의미한 개선
+                    </li>
+                    <li>
+                      광고 수익 + 포인트 소비가 선순환하는
+                      <strong>자생적 리워드 생태계</strong> 구축
+                    </li>
+                    <li>
+                      포인트 적립 → 광고 시청 → 가맹점 결제까지 이어지는
+                      <strong>End-to-End 유저 저니</strong> 완성
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. 만보기 SSOT -->
+            <div class="project-card violet" id="bokji-ssot">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">아키텍처</div>
+                  <div class="pc-title">SSOT 기반 아키텍처 재설계</div>
+                  <div class="pc-summary">
+                    Foreground Service 알림창 UI 추가로 발생한 데이터 정합성
+                    문제. <br />
+                    StepCounterManager 싱글톤 + useSyncExternalStore로 해결.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">알림창/앱 UI 불일치 해결</span>
+                    <span class="pc-result-chip">위젯·워치 확장 가능</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">아키텍처 전체 설계</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Android Native Module(AOSPedometer) 작성 - Foreground
+                      Service 걸음수 콜백 → RN 브리지 전달
+                    </li>
+                    <li>
+                      Room DB · DAO · Repository 레이어 설계 및
+                      StepCounterManager 코루틴 기반 데이터 동기화 구현
+                    </li>
+                    <li>
+                      SSOT 아키텍처로 네이티브↔RN 간 걸음수 데이터 단일 출처
+                      확보
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">문제의 발단</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>신규 요구사항:</strong> 앱이 꺼져 있어도 Android
+                      알림창(Foreground Service)에 걸음 수 실시간 표시
+                    </li>
+                    <li>
+                      <strong>발생 문제:</strong> 알림창 UI와 앱 화면이 각자
+                      데이터를 처리 → 걸음 수 불일치(데이터 정합성 문제)
+                    </li>
+                    <li>
+                      JS 레벨과 Native 레벨이 얽혀 기능 추가할 때마다 싱크 코드
+                      중복, 관리 불가 상태에 도달
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">SSOT 아키텍처 설계</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>Native Layer:</strong>
+                      <code>StepCounterManager</code> 싱글톤 도입.
+                      Service·Module은 이 매니저를 '구독'만 하는 형태로 관심사
+                      분리
+                    </li>
+                    <li>
+                      <strong>JS Layer:</strong> 고빈도 데이터를 React 렌더링
+                      엔진과 분리하기 위해
+                      <code>useSyncExternalStore</code> 도입
+                    </li>
+                    <li>
+                      <strong>데이터 흐름 단방향화:</strong> Service → DB →
+                      React Native 방향으로 정리, 포그라운드 진입 시 DB 기준으로
+                      UI 재동기화
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="arch-img-wrap"
+                  onclick="
+                    openLightbox(DOMAIN + '/img/pedometer_architecture2.png')
+                  "
+                >
+                  <img
+                    src="img/pedometer_architecture2.png"
+                    alt="만보기 SSOT 아키텍처 구조도"
+                  />
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>알림창 / 앱 UI 간 걸음 수 불일치 완전 해결</li>
+                    <li>앱 재실행, 백그라운드 복귀 시에도 일관된 상태 유지</li>
+                    <li>
+                      위젯·워치 연동 요구사항이 와도 매니저만 연결하면 되는
+                      <strong>확장성</strong> 확보
+                    </li>
+                  </ul>
+                </div>
+                <div class="quote-box">
+                  "기능의 확장은 아키텍처의 견고함을 시험하는 계기가
+                  되었습니다." <br />
+                  네이티브와 JS 레이어 간의 명확한 역할 분담(Separation of
+                  Concerns)의 중요성을 깊이 깨달았습니다.
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. 네이티브 만보기 엔진 -->
+            <div class="project-card violet" id="bokji-pedometer">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">네이티브</div>
+                  <div class="pc-title">
+                    Native: 자체 만보기 엔진 설계 및 최적화
+                  </div>
+                  <div class="pc-summary">
+                    OS 제약과 실환경 변수를 극복한 고정밀 걸음수 추적 시스템.
+                    외부 의존성을 제거하고 Android Native Sensor API를 직접
+                    제어. 삼성헬스·토스 벤치마킹으로 오차 범위 1% 이내 정밀도
+                    달성.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">정확도 오차 1% 이내</span>
+                    <span class="pc-result-chip">재부팅 후 걸음수 유지</span>
+                    <span class="pc-result-chip">Android 12~15 대응</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">문제 상황</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>의존성 리스크:</strong> 외부 라이브러리(Google Fit
+                      등) 사용 시 플랫폼 종속성이 높고 커스텀 리워드 로직 구현에
+                      제약 발생
+                    </li>
+                    <li>
+                      <strong>데이터 휘발성:</strong> Native 센서 API는 기기
+                      재부팅·강제 종료 시 누적 값이 초기화되는 물리적 한계 존재
+                    </li>
+                    <li>
+                      <strong>백그라운드 제약:</strong> Android 12~15의 배터리
+                      최적화 정책 및 포그라운드 서비스 제한으로 서비스 생존율
+                      저하
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">① Native 엔진 독자 설계</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      외부 의존성을 제거하고
+                      <strong>Android Native Sensor API 직접 제어</strong>
+                    </li>
+                    <li>
+                      삼성헬스·토스 벤치마킹을 통해 가속도 센서 기반 고정밀 측정
+                      로직 구현 - 대조 테스트 결과 오차 범위
+                      <strong>1% 이내</strong> 달성
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ② 데이터 연속성 보장 - Room/SQLite Checkpoint
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Android Jetpack Room으로 영속성 레이어 설계 - 실시간
+                      센서값과 로컬 DB 누적치를 동기화하여 재부팅 후에도 기존
+                      걸음수 보존
+                    </li>
+                    <li>
+                      자정 기준 걸음수 자동 초기화 및 앱 재진입 시 서비스 누적값
+                      기준으로 JS 레이어 상태 보정
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">③ 서비스 안정성 강화</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <code>START_STICKY</code> 및 알림 우선순위 최적화로 서비스
+                      생존율 극대화
+                    </li>
+                    <li>
+                      Android 10(Q) <code>ACTIVITY_RECOGNITION</code> 권한,
+                      Android 14/15 백그라운드 작업 제약 등 OS 버전별 분기 처리
+                    </li>
+                    <li>
+                      <code>DeviceEventEmitter</code>로 네이티브 데이터를 JS
+                      레이어로 즉시 브릿징 - 앱 진입 시 지연 없는 실시간 걸음수
+                      애니메이션 제공
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    현재 진행 중 - 서비스 생존율 100% 고도화
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      일부 기기의 Doze 모드·제조사별 공격적인 백그라운드 강제
+                      종료로 드문 서비스 중단 현상 확인 중
+                    </li>
+                    <li>
+                      Firebase Crashlytics + 커스텀 로그로 종료 시점 기기
+                      상태(배터리·메모리) 특정 분석 중
+                    </li>
+                    <li>
+                      WorkManager 기반 Self-Healing 구조(비정상 종료 시 주기적
+                      재시작 보장) 검토·테스트 중
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">성과</div>
+                  <ul class="detail-items">
+                    <li>
+                      삼성헬스·토스 대조 테스트 결과 걸음수 정확도
+                      <strong>오차 1% 이내</strong> 달성
+                    </li>
+                    <li>
+                      1만 명 이상 실사용 환경에서 재부팅 등 주요 변수 대응으로
+                      높은 서비스 연속성 확보
+                    </li>
+                    <li>
+                      Android 15 포함 최신 OS 버전별 권한·백그라운드 정책 준수로
+                      안정적인 배포 기반 마련
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Crashlytics -->
+            <div class="project-card violet" id="bokji-crashlytics">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">모니터링</div>
+                  <div class="pc-title">
+                    Firebase Crashlytics 기반 ANR 모니터링 체계 구축
+                  </div>
+                  <div class="pc-summary">
+                    Crashlytics 커스텀 리포팅으로 장애 대응 시간 90% 단축.
+                    Android 12+ ANR 발생률 0.3%대 감소, Crash-free 비율 96.5% →
+                    99.8%로 1만 명 규모 서비스 운영 안정성 확보.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">Crash-free 96.5% → 99.8%</span>
+                    <span class="pc-result-chip">ANR 발생률 0.3%대</span>
+                    <span class="pc-result-chip">장애 대응 시간 90% 단축</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">문제 상황</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      서비스 도입 초기 Crash-free 비율 <strong>96.5%</strong> -
+                      1만 명 규모에서 위험 수준
+                    </li>
+                    <li>
+                      Android 12+ 환경에서
+                      <code>ForegroundServiceStartNotAllowedException</code> 등
+                      비정상 종료·ANR 지속 발생
+                    </li>
+                    <li>
+                      Release 빌드에서만 재현되는 크래시 → 로컬 디버그 환경으로
+                      원인 특정 불가, 모니터링 체계 구축 필수
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">① 커스텀 리포팅 구조 설계</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      회원사마다 사용자 데이터·지원 기능이 달라, 크래시 리포트에
+                      <strong>사용자 정보 + 회원사 정보를 함께 제출</strong>하는
+                      구조 설계
+                    </li>
+                    <li>
+                      장애 발생 시 어떤 회원사·사용자 환경인지 즉시 파악 → 장애
+                      대응 시간 <strong>90% 단축</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">② ANR 탐지 및 해결 프로세스</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Crashlytics로 ANR / 크래시 탐지 → 스택 트레이스 분석으로
+                      문제 코드 식별
+                    </li>
+                    <li>Android Studio Logcat / Profiler로 로컬 재현</li>
+                    <li>
+                      Android OS 버전별 Foreground Service 실행 정책 분기 처리로
+                      근본 원인 해소
+                    </li>
+                    <li>단계적 수정 후 재배포 → 재모니터링으로 수치 추적</li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">결과</div>
+                  <ul class="detail-items">
+                    <li>
+                      Crash-free 사용자 비율 <strong>96.5% → 99.8%</strong>로
+                      상향 안정화
+                    </li>
+                    <li>
+                      Android 12+ ANR 발생률 <strong>0.3%대</strong>로 감소 -
+                      1만 명 규모 서비스 운영 안정성 확보
+                    </li>
+                    <li>
+                      커스텀 리포팅으로 장애 대응 시간 <strong>90% 단축</strong>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. SDK 마이그레이션 -->
+            <div class="project-card violet" id="bokji-sdk">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">마이그레이션</div>
+                  <div class="pc-title">
+                    Expo SDK v51 → v53 마이그레이션 및 New Architecture 전환
+                  </div>
+                  <div class="pc-summary">
+                    Google Play Android 15 타겟팅 의무화에 대응하고, Bridge
+                    방식을 JSI 기반 동기 호출로 전환하여 네이티브 모듈 통신 병목
+                    해소 및 앱 전체 응답 속도 개선.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip"
+                      >Android 15 Play 정책 준수</span
+                    >
+                    <span class="pc-result-chip">Bridge → JSI 전환</span>
+                    <span class="pc-result-chip">16KB 페이지 대응 완료</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">배경 및 전환 이유</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>규제 대응:</strong> Google Play의 Android 15(API
+                      35) 타겟팅 의무화에 따른 배포 안정성 확보 필요
+                    </li>
+                    <li>
+                      <strong>성능 한계:</strong> 기존 Bridge 방식의 비동기 통신
+                      병목을 해결하고 런타임 성능 극대화를 위해 New Architecture
+                      전환 결정
+                    </li>
+                    <li>
+                      <strong>환경 변화:</strong> 차세대 기기의 표준이 될 16KB
+                      페이지 크기 환경에 대한 선제적 네이티브 호환성 검증 필요
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ① New Architecture 전환 - JSI & Fabric
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      직렬화 기반 Bridge 방식을 제거하고
+                      <strong
+                        >JSI(JavaScript Interface) 기반 동기식 네이티브
+                        호출</strong
+                      >로 전환
+                    </li>
+                    <li>
+                      Fabric Renderer 도입으로 복잡한 레이아웃의 렌더링 효율
+                      개선
+                    </li>
+                    <li>
+                      TurboModules 규격에 맞춘 커스텀 브릿지 코드 리팩터링 및 뉴
+                      아키텍처 미지원 레거시 라이브러리 대체 라이브러리로 교체
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">② 16KB 페이지 크기 호환성 확보</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      네이티브 종속성 라이브러리를 전수 조사하여 메모리 정렬
+                      이슈 식별
+                    </li>
+                    <li>
+                      호환 가능한 최신 바이너리(<code>.so</code>)로 교체 및
+                      리빌드하여 차세대 고성능 기기 크래시 방지
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">③ 체계적 마이그레이션 관리</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <code>expo-upgrade-helper</code> 기반 단계적 업그레이드
+                      전략 수립
+                    </li>
+                    <li>
+                      회귀 테스트를 통한 Breaking Changes 즉각 검증으로 서비스
+                      무중단 안정성 확보
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">성과</div>
+                  <ul class="detail-items">
+                    <li>
+                      Android 15 타겟팅 및 최신 Google Play 배포 규정 준수로
+                      <strong>서비스 지속성 확보</strong>
+                    </li>
+                    <li>
+                      JSI 기반 호출 전환으로 네이티브 모듈 통신 지연 단축,
+                      <strong>앱 전체 응답 속도 개선</strong>
+                    </li>
+                    <li>
+                      16KB 페이지 대응 완료로 차세대 기기에서도
+                      <strong>크래시 없는 안정적 구동 기반 마련</strong>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. 배포 자동화 -->
+            <div class="project-card violet" id="bokji-deploy">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">DevOps</div>
+                  <div class="pc-title">
+                    DevOps: 빌드 파이프라인 구축 및 배포 자동화
+                  </div>
+                  <div class="pc-summary">
+                    수동 빌드 환경의 전 과정을 자동화하여 릴리즈 주기 95% 단축.
+                    <br />
+                    EAS Build로 환경 표준화, OTA로 배포 이원화, Fastlane으로
+                    스토어 제출까지 엔드투엔드 자동화 구축.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">릴리즈 주기 95% 단축</span>
+                    <span class="pc-result-chip">빌드 성공률 100%</span>
+                    <span class="pc-result-chip">담당자 의존성 제거</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+                <div class="detail-block">
+                  <div class="detail-label">문제 상황</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>휴먼 에러:</strong> 업체별로 다른 빌드 환경을
+                      로컬에서 수동 관리하며 설정 오류·환경 불일치로 빌드 실패
+                      빈번
+                    </li>
+                    <li>
+                      <strong>배포 병목:</strong> 오타 수정 등 가벼운 로직
+                      변경에도 수일이 소요되는 스토어 심사 과정을 매번 반복하여
+                      업데이트 지연
+                    </li>
+                    <li>
+                      <strong>운영 공수:</strong> 스토어 콘솔 업로드와
+                      메타데이터 수기 입력 등 반복 단순 작업이 개발자 생산성
+                      저해
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ① 빌드 표준화 - EAS Build (IaC)
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <code>eas.json</code>으로 빌드 프로필을
+                      <strong>코드화(IaC)</strong>하여 클라우드 기반 빌드 시스템
+                      구축
+                    </li>
+                    <li>
+                      로컬 환경 의존성을 완전히 제거하여
+                      <strong>빌드 성공률 100% 달성</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">② 배포 이원화 - OTA Updates</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      네이티브 변경이 없는 수정은 EAS Update로
+                      <strong>심사 없이 즉시 반영</strong> - 장애 대응 속도
+                      극대화
+                    </li>
+                    <li>
+                      Preview 트랙에서 검증 후 Production으로 승격하는 안정적인
+                      단계적 배포 체계 수립
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">③ 워크플로우 자동화 - Fastlane</div>
+                  <ul class="detail-items violet">
+                    <li>
+                      EAS 클라우드 빌드와 Fastlane을 연동, 명령어 한 줄로
+                      바이너리 생성부터 스토어 제출까지
+                      <strong>전 과정 자동화</strong>
+                    </li>
+                    <li>
+                      수동 업로드 공수를 제거하고 개발 본연의 업무에 집중할 수
+                      있는 환경 조성
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">성과</div>
+                  <ul class="detail-items">
+                    <li>
+                      단순 로직 수정 배포 시간
+                      <strong>수일(심사 대기) → 수 분(OTA)</strong>으로 단축,
+                      릴리즈 주기 <strong>95% 개선</strong>
+                    </li>
+                    <li>
+                      빌드 환경 코드화로 환경 의존적 빌드 실패 원천 차단, 빌드
+                      성공률 <strong>100% 달성</strong>
+                    </li>
+                    <li>
+                      반복 수동 작업 자동화로 개발자 생산성 향상 및 릴리즈
+                      담당자 개인 의존성 완전 제거
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. 보안 고도화 -->
+            <div class="project-card violet" id="bokji-security">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">Security</div>
+                  <div class="pc-title">
+                    금융감독원 수검 대비 모바일 앱 보안 고도화
+                  </div>
+                  <div class="pc-summary">
+                    루팅/탈옥 차단·난독화·하드웨어 보안 저장소·화면 캡처 방지
+                    등<br />
+                    보안 코드 적용
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip">변조 환경 실행 차단</span>
+                    <span class="pc-result-chip"
+                      >바이너리 크기 15~20% 감소</span
+                    >
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+
+                <!-- ① 루팅/탈옥 차단 -->
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ① 변조 실행 환경 통제 - 루팅/탈옥 및 디버깅 차단
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>배경:</strong> 루팅/탈옥 기기는 OS 샌드박스가
+                      무너져 메모리 해킹·데이터 탈취에 직접 노출; 금융 앱 '실행
+                      환경 무결성' 확보 의무.
+                    </li>
+                    <li>
+                      <strong>오픈소스 무의존:</strong>
+                      <code>JailMonkey</code> 등 라이브러리를 배제하고
+                      Native(Java/Swift) 레벨에서 <code>su</code> 바이너리·<code
+                        >Cydia</code
+                      >
+                      패키지·시스템 디렉터리 권한을 직접 체크 → 최신 우회 기법
+                      대응.
+                    </li>
+                    <li>
+                      <strong>다중 검증:</strong> 앱 최초 실행뿐 아니라
+                      <strong>중요 금융 거래 직전</strong> 재검증 로직 실행 →
+                      런타임 우회 시도까지 차단.
+                    </li>
+                    <li>
+                      <strong>디버깅 차단:</strong> Release 빌드에서 디버거
+                      연결·에뮬레이터 감지 시 즉시 앱 종료 → 동적 분석 및 로직
+                      리버싱 차단.
+                    </li>
+                  </ul>
+                  <div class="result-box">
+                    <div class="detail-label">성과</div>
+                    <ul class="detail-items">
+                      <li>변조 환경에서의 앱 실행 방지</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- ② 난독화 -->
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ② 역공학 방지 - ProGuard & JS Bundle 난독화
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>배경:</strong> React Native 특성상 JS 번들이
+                      평문으로 빌드되어 비즈니스 로직·API 키 탈취 위험;
+                      JADX·apktool 등 분석 도구로 소스코드 가독성 확보 시 공격
+                      타겟화.
+                    </li>
+                    <li>
+                      <strong>JS 난독화:</strong> Metro Bundler 설정으로 배포
+                      번들 최소화(Minify) 및 변수명 치환 적용.
+                    </li>
+                    <li>
+                      <strong>Native 보호:</strong> Android
+                      <strong>R8/ProGuard</strong>로 Java/Kotlin 클래스·메서드명
+                      무작위 치환 + 미사용 코드 제거(Shrinking).
+                    </li>
+                    <li>
+                      <strong>예외 규칙 최적화:</strong> 외부
+                      라이브러리·네이티브 브릿지 연동 런타임 에러 방지를 위해
+                      <code>proguard-rules.pro</code> 정밀 튜닝.
+                    </li>
+                  </ul>
+                  <div class="result-box">
+                    <div class="detail-label">성과</div>
+                    <ul class="detail-items">
+                      <li>핵심 비즈니스 로직·보안 로직 역공학 원천 차단</li>
+                      <li>
+                        난독화 + 코드 제거로 앱 바이너리 크기
+                        <strong>약 15~20% 감소</strong>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- ③ 하드웨어 보안 저장소 + Biometrics -->
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ③ 하드웨어 보안 저장소 + Biometrics - Keychain /
+                    Keystore(TEE)
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>문제:</strong> 기존 <code>AsyncStorage</code>는
+                      데이터 평문 노출; 기기 분실·루팅 시 세션 토큰·개인정보
+                      탈취 가능.
+                    </li>
+                    <li>
+                      <strong>보안 저장소 전환:</strong>
+                      <code>AsyncStorage</code> 폐기 → iOS
+                      <strong>Keychain</strong> / Android
+                      <strong>Keystore(TEE)</strong> 기반
+                      <code>react-native-keychain</code> 도입.
+                    </li>
+                    <li>
+                      <strong>Biometrics 결합:</strong> 보안 저장소 데이터 접근
+                      시마다 OS 레벨 생체 인증(FaceID / TouchID / Fingerprint)
+                      강제. <code>ACCESS_CONTROL.BIOMETRY_ANY</code> 옵션으로
+                      Secure Enclave 하드웨어 키 해제 설계.
+                    </li>
+                    <li>
+                      <strong>자기 파괴 로직:</strong> 생체 인식 일정 횟수 실패
+                      시 민감 정보 즉시 파기(Self-destruct) → Fallback 우회 공격
+                      차단.
+                    </li>
+                  </ul>
+                  <div class="result-box">
+                    <div class="detail-label">성과</div>
+                    <ul class="detail-items">
+                      <li>
+                        <strong>공격 비용(Attack Cost) 극대화:</strong> 샌드박스
+                        외부 및 하드웨어 보안 영역(TEE)에 키를 격리하여, 기기
+                        루팅/탈취 시에도 메모리 덤프를 통한 키 탈취 시도 무력화.
+                      </li>
+                      <li>
+                        <strong>민감 정보 노출 제로화:</strong> 앱 내 데이터
+                        잔상 및 로컬 평문 저장을 완전히 제거하여, 런타임 및 정적
+                        분석 상에서의 데이터 유출 경로 차단.
+                      </li>
+                      <li>
+                        <strong
+                          >OS 레벨 보안 신뢰 체인(Trust Chain) 형성:</strong
+                        >
+                        Biometrics와 Secure Enclave를 연동하여, 사용자 본인 인증
+                        없이는 하드웨어 레벨에서 복호화 키 해제 자체가 불가능한
+                        구조 설계.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- ④ 화면 캡처 방지 -->
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ④ OS 수준 화면 캡처·녹화 방지 - Anti-Screen Capture
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>배경:</strong> 원격 제어 앱·스파이웨어를 통한
+                      비밀번호·잔액 등 금융 정보 무단 캡처·녹화 위협.
+                    </li>
+                    <li>
+                      <strong>Android:</strong>
+                      <code>WindowManager.LayoutParams.FLAG_SECURE</code> 적용 →
+                      시스템 레벨에서 캡처·녹화·멀티태스킹 화면 노출 원천 차단.
+                    </li>
+                    <li>
+                      <strong>iOS:</strong> 보안 필드 레이어를 활용해 화면 녹화
+                      시 민감 정보 마스킹 처리.
+                    </li>
+                  </ul>
+                  <div class="result-box">
+                    <div class="detail-label">성과</div>
+                    <ul class="detail-items">
+                      <li>
+                        <strong>시각적 데이터 유출 경로 차단:</strong> 원격 제어
+                        등을 이용한 비인가 사용자의 정보 탈취 시도를 OS 계층에서
+                        원천 차단.
+                      </li>
+                      <li>
+                        <strong>앱 프라이버시 강화:</strong> 멀티태스킹 전환 시
+                        발생할 수 있는 UI 스냅샷을 방지하여 디바이스 내 민감
+                        정보의 물리적 잔상 제거.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. 성능 최적화 -->
+            <div class="project-card violet" id="bokji-perf">
+              <div
+                class="pc-header"
+                onclick="toggle(this.closest('.project-card'))"
+              >
+                <div>
+                  <div class="pc-tag violet">Performance</div>
+                  <div class="pc-title">
+                    앱 성능 최적화 - 번들 분석 · 런타임 병목 탐지 · React 렌더링
+                    개선
+                  </div>
+                  <div class="pc-summary">
+                    번들 분석기(정적)와 Flashlight + Maestro(런타임) 두 도구를
+                    병행하여<br />
+                    TTI 지연 및 CPU/RAM 병목을 정량 측정 후 개선.
+                  </div>
+                  <div class="pc-results">
+                    <span class="pc-result-chip"
+                      >번들 23.4% 감축 (▼2.48 MB)</span
+                    >
+                    <span class="pc-result-chip">성능 점수 71 → 93점</span>
+                    <span class="pc-result-chip">CPU Peak ▼53%</span>
+                    <span class="pc-result-chip">RAM ▼90 MB</span>
+                  </div>
+                </div>
+                <svg
+                  class="pc-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="pc-body">
+                <div class="pc-divider"></div>
+
+                <!-- 정적 번들 분석 -->
+                <div class="detail-block">
+                  <div class="detail-label">
+                    [ 정적 분석 ] react-native-bundle-visualizer - Total 10.59
+                    MB
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <strong>src/assets 30.6% (3.0 MB)</strong> - SVG 내부에
+                      Base64 PNG 데이터 내장으로 번들 비대화
+                    </li>
+                    <li>
+                      <strong>Victory 차트 계열 ~600 KB</strong> - 특정 화면
+                      전용 라이브러리가 초기 번들에 전량 포함
+                    </li>
+                    <li>
+                      <strong>node-forge 274 KB</strong> - 미사용 Import로 인한
+                      불필요 포함
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ① 에셋 구조 개선 - SVG Base64 인라인 제거
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      SVG 내장 Base64 PNG를 독립 PNG 파일로 분리,
+                      <code>mIcon.tsx</code>에 SVG/PNG 하이브리드 렌더링 타입
+                      분기 처리 → <strong>2.0 MB 즉시 제거</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ② 라이브러리 교체 & Dead Code 제거
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Victory 계열 → 경량
+                      <code>react-native-gifted-charts</code> 교체 →
+                      <strong>360 KB 제거</strong>
+                    </li>
+                    <li>
+                      미사용 <code>forge</code> Import 삭제 → Tree-shaking 효율
+                      개선. 누적 중복 파일 13개 전수 삭제
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">정적 분석 결과</div>
+                  <ul class="detail-items">
+                    <li>
+                      JS Bundle Size
+                      <strong>10.59 MB → 8.11 MB (▼ 2.48 MB, 23.4%)</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="img-compare-grid">
+                  <div class="img-compare-item">
+                    <div class="img-compare-label before">Before 10.59 MB</div>
+                    <div
+                      class="arch-img-wrap"
+                      onclick="openLightbox(DOMAIN + '/img/bundle_before.png')"
+                    >
+                      <img
+                        src="img/bundle_before.png"
+                        alt="번들 최적화 전 10.59 MB"
+                      />
+                    </div>
+                  </div>
+                  <div class="img-compare-item">
+                    <div class="img-compare-label after">
+                      After 8.11 MB (▼ 23.4%)
+                    </div>
+                    <div
+                      class="arch-img-wrap"
+                      onclick="openLightbox(DOMAIN + '/img/bundle_after.png')"
+                    >
+                      <img
+                        src="img/bundle_after.png"
+                        alt="번들 최적화 후 8.11 MB"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pc-divider" style="margin: 20px 0"></div>
+
+                <!-- 런타임 분석 -->
+                <div class="detail-block">
+                  <div class="detail-label">
+                    [ 런타임 분석 ] Flashlight + Maestro - CPU/RAM 병목 정량
+                    탐지
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      Maestro 자동화 시나리오로 측정 오차를 제거하고 실제
+                      기기에서 CPU/RAM 지표 수집
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ③ 탭 단위 Lazy Rendering - CPU 300%+ 급등 해소
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      특정 탭 진입 시 CPU 300%+ 급등 원인 분석 → 5개 하위
+                      컴포넌트 동시 마운트로 병렬 API 호출·렌더링 발생 확인
+                    </li>
+                    <li>
+                      탭 단위 <strong>Lazy Rendering</strong>으로 전환하여 초기
+                      JS 실행 부하 분산 → <strong>CPU Peak 53% 개선</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ④ ScrollView → FlatList 전환 - RAM 90 MB 절감
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <code>ScrollView</code> 사용 시 비노출 아이템까지 일괄
+                      마운트로 <strong>RAM 680 MB+</strong> 과부하 식별
+                    </li>
+                    <li>
+                      <code>FlatList</code> 가상화로 비노출 메모리 로드 차단,
+                      <code>React.memo</code> + <code>useCallback</code> 결합 →
+                      <strong>RAM 약 90 MB 절감</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <div class="detail-label">
+                    ⑤ useEffect 의존성 & useMemo 최적화
+                  </div>
+                  <ul class="detail-items violet">
+                    <li>
+                      <code>useEffect</code> 의존성 배열에 포함된 객체 참조 →
+                      불필요한 API 재호출·리렌더링 반복. 원시값 기반 추출로 수정
+                    </li>
+                    <li>
+                      리스트 렌더링 복잡한 데이터 가공 로직에
+                      <code>useMemo</code> 적용 → 렌더링 비용 최소화 및 UI
+                      응답성 향상
+                    </li>
+                  </ul>
+                </div>
+                <div class="result-box">
+                  <div class="detail-label">
+                    런타임 분석 결과 (Flashlight 측정)
+                  </div>
+                  <ul class="detail-items">
+                    <li>
+                      종합 성능 점수 <strong>71점 → 93점 (▲ 31% 향상)</strong>
+                    </li>
+                    <li>
+                      Average CPU usage
+                      <strong>106.2% → 92.7% (▼ 13.5%p)</strong>, High CPU Usage
+                      <strong>8s → None (완전 해소)</strong>
+                    </li>
+                    <li>
+                      Average RAM usage
+                      <strong>689.2 MB → 599.5 MB (▼ 89.7 MB)</strong>
+                    </li>
+                    <li>
+                      Average Test Runtime
+                      <strong>37,500 ms → 16,500 ms (▼ 56% 단축)</strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="img-compare-grid">
+                  <div class="img-compare-item">
+                    <div class="img-compare-label before">
+                      Before 71점 (CPU 106.2%, RAM 689.2 MB)
+                    </div>
+                    <div
+                      class="arch-img-wrap"
+                      onclick="
+                        openLightbox(DOMAIN + '/img/performance_before.png')
+                      "
+                    >
+                      <img
+                        src="img/performance_before.png"
+                        alt="Flashlight 최적화 전 71점"
+                      />
+                    </div>
+                  </div>
+                  <div class="img-compare-item">
+                    <div class="img-compare-label after">
+                      After 93점 (CPU 92.7%, RAM 599.5 MB)
+                    </div>
+                    <div
+                      class="arch-img-wrap"
+                      onclick="
+                        openLightbox(DOMAIN + '/img/performance_after.png')
+                      "
+                    >
+                      <img
+                        src="img/performance_after.png"
+                        alt="Flashlight 최적화 후 93점"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- ── 비즈비톡 프로젝트 ── -->
       <div class="section" id="bizbitalk">
         <div class="section-grid">
-          <div class="section-label"><img src="https://bookhabit.github.io/img/bizbeetalk.png" alt="비즈비톡">비즈비톡</div>
+          <div class="section-label">
+            <img src="img/bizbeetalk.png" alt="비즈비톡" />비즈비톡
+          </div>
           <div>
             <div class="project-section-title">
               <span>실무 프로젝트 상세 - 비즈비톡</span>
@@ -1361,8 +2602,18 @@
                     </li>
                   </ul>
                 </div>
-                <div class="arch-img-wrap" onclick="openLightbox('https://bookhabit.github.io/img/local_first_chat_architecture.png')">
-                  <img src="https://bookhabit.github.io/img/local_first_chat_architecture.png" alt="Local-First 아키텍처 구조도" />
+                <div
+                  class="arch-img-wrap"
+                  onclick="
+                    openLightbox(
+                      DOMAIN + '/img/local_first_chat_architecture.png',
+                    )
+                  "
+                >
+                  <img
+                    src="img/local_first_chat_architecture.png"
+                    alt="Local-First 아키텍처 구조도"
+                  />
                 </div>
                 <div class="result-box">
                   <div class="detail-label">개선 결과 (Before → After)</div>
@@ -1499,9 +2750,9 @@
                     인증/인가 E2E 테스트 자동화 (Detox)
                   </div>
                   <div class="pc-summary">
-                    1인 프론트엔드·QA 부재 환경에서 Detox로 인증 핵심 플로우를
-                    자동화. 기획 변동과 서버 코드 변경 속에서도 배포를 두려움
-                    없이 지속할 수 있는 지속 가능한 개발 환경 구축.
+                    당시 1인 프론트엔드·QA 부재 환경에서 Detox로 인증 핵심
+                    플로우를 자동화. 기획 변동과 서버 코드 변경 속에서도 배포를
+                    두려움 없이 지속할 수 있는 지속 가능한 개발 환경 구축.
                   </div>
                   <div class="pc-results">
                     <span class="pc-result-chip"
@@ -1596,722 +2847,6 @@
         </div>
       </div>
 
-      <!-- ── 복지찬스 프로젝트 ── -->
-      <div class="section" id="bokji">
-        <div class="section-grid">
-          <div class="section-label"><img src="https://bookhabit.github.io/img/bokji.png" alt="복지찬스">복지찬스</div>
-          <div>
-            <div class="project-section-title violet">
-              <span>실무 프로젝트 상세 - 복지찬스</span>
-            </div>
-
-            <!-- 1. MAU 300% 증가 -->
-            <div class="project-card violet" id="bokji-mau">
-              <div
-                class="pc-header"
-                onclick="toggle(this.closest('.project-card'))"
-              >
-                <div>
-                  <div class="pc-tag violet">성장</div>
-                  <div class="pc-title">
-                    만보기 서비스 구현 및 포인트 지급 제도로 MAU 300% 증가
-                  </div>
-                  <div class="pc-summary">
-                    걸음수 기반 복지 포인트 차등 지급, 광고 리워드 구조,
-                    가맹점·온라인 사용처 연결로 앱 핵심 성장 지표를 3배 이상
-                    견인.
-                  </div>
-                  <div class="pc-results">
-                    <span class="pc-result-chip">MAU 300% 증가</span>
-                    <span class="pc-result-chip">리워드 구조 설계</span>
-                    <span class="pc-result-chip">실사용 체감 혜택</span>
-                  </div>
-                </div>
-                <svg
-                  class="pc-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-              <div class="pc-body">
-                <div class="pc-divider"></div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ① 유저 리텐션을 위한 인센티브 구조 설계
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      단순 걸음수 측정을 넘어 목표 달성도에 따른
-                      <strong>차등 보상 시스템</strong> 구현 → 일회성 방문객을
-                      충성 사용자로 전환
-                    </li>
-                    <li>
-                      일일 목표 걸음수 달성 시 복지 포인트 즉시 지급 -
-                      게이미피케이션 요소로 앱 재방문 유도
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ② 수익 모델과 유저 혜택의 공존 (광고 리워드 구조)
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      포인트 지급 전 광고 시청 단계를 전략적으로 배치 - 서비스
-                      수익성과 유저 혜택을 동시에 확보
-                    </li>
-                    <li>
-                      포인트 적립이라는 확실한 보상을 통해 광고에 대한 유저
-                      거부감을 최소화
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ③ 온/오프라인 결제 생태계 연결 (포인트 실사용성 확보)
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      외부 결제 모듈 및 가맹점 API 연동 - 적립 포인트로 상품
-                      구매·결제 가능한 인프라 구축
-                    </li>
-                    <li>
-                      <strong>"포인트 = 현금"</strong> 인식을 심어 포인트 실사용
-                      전환율과 앱 의존도 상승
-                    </li>
-                  </ul>
-                </div>
-                <div class="result-box">
-                  <div class="detail-label">성과</div>
-                  <ul class="detail-items">
-                    <li>
-                      만보기 도입 전 대비 <strong>MAU 300% 상승</strong> -
-                      재방문율(Retention) 유의미한 개선
-                    </li>
-                    <li>
-                      광고 수익 + 포인트 소비가 선순환하는
-                      <strong>자생적 리워드 생태계</strong> 구축
-                    </li>
-                    <li>
-                      포인트 적립 → 광고 시청 → 가맹점 결제까지 이어지는
-                      <strong>End-to-End 유저 저니</strong> 완성
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. 만보기 SSOT -->
-            <div class="project-card violet" id="bokji-ssot">
-              <div
-                class="pc-header"
-                onclick="toggle(this.closest('.project-card'))"
-              >
-                <div>
-                  <div class="pc-tag violet">아키텍처</div>
-                  <div class="pc-title">SSOT 기반 아키텍처 재설계</div>
-                  <div class="pc-summary">
-                    Foreground Service 알림창 UI 추가로 발생한 데이터 정합성
-                    문제. <br />
-                    StepCounterManager 싱글톤 + useSyncExternalStore로 해결.
-                  </div>
-                  <div class="pc-results">
-                    <span class="pc-result-chip">알림창/앱 UI 불일치 해결</span>
-                    <span class="pc-result-chip">위젯·워치 확장 가능</span>
-                  </div>
-                </div>
-                <svg
-                  class="pc-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-              <div class="pc-body">
-                <div class="pc-divider"></div>
-                <div class="detail-block">
-                  <div class="detail-label">아키텍처 전체 설계</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      Android Native Module(AOSPedometer) 작성 - Foreground
-                      Service 걸음수 콜백 → RN 브리지 전달
-                    </li>
-                    <li>
-                      Room DB · DAO · Repository 레이어 설계 및
-                      StepCounterManager 코루틴 기반 데이터 동기화 구현
-                    </li>
-                    <li>
-                      SSOT 아키텍처로 네이티브↔RN 간 걸음수 데이터 단일 출처
-                      확보
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">문제의 발단</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <strong>신규 요구사항:</strong> 앱이 꺼져 있어도 Android
-                      알림창(Foreground Service)에 걸음 수 실시간 표시
-                    </li>
-                    <li>
-                      <strong>발생 문제:</strong> 알림창 UI와 앱 화면이 각자
-                      데이터를 처리 → 걸음 수 불일치(데이터 정합성 문제)
-                    </li>
-                    <li>
-                      JS 레벨과 Native 레벨이 얽혀 기능 추가할 때마다 싱크 코드
-                      중복, 관리 불가 상태에 도달
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">SSOT 아키텍처 설계</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <strong>Native Layer:</strong>
-                      <code>StepCounterManager</code> 싱글톤 도입.
-                      Service·Module은 이 매니저를 '구독'만 하는 형태로 관심사
-                      분리
-                    </li>
-                    <li>
-                      <strong>JS Layer:</strong> 고빈도 데이터를 React 렌더링
-                      엔진과 분리하기 위해
-                      <code>useSyncExternalStore</code> 도입
-                    </li>
-                    <li>
-                      <strong>데이터 흐름 단방향화:</strong> Service → DB →
-                      React Native 방향으로 정리, 포그라운드 진입 시 DB 기준으로
-                      UI 재동기화
-                    </li>
-                  </ul>
-                </div>
-                <div class="arch-img-wrap" onclick="openLightbox('https://bookhabit.github.io/img/pedometer_architecture2.png')">
-                  <img src="https://bookhabit.github.io/img/pedometer_architecture2.png" alt="만보기 SSOT 아키텍처 구조도" />
-                </div>
-                <div class="result-box">
-                  <div class="detail-label">결과</div>
-                  <ul class="detail-items">
-                    <li>알림창 / 앱 UI 간 걸음 수 불일치 완전 해결</li>
-                    <li>앱 재실행, 백그라운드 복귀 시에도 일관된 상태 유지</li>
-                    <li>
-                      위젯·워치 연동 요구사항이 와도 매니저만 연결하면 되는
-                      <strong>확장성</strong> 확보
-                    </li>
-                  </ul>
-                </div>
-                <div class="quote-box">
-                  "기능의 확장은 아키텍처의 견고함을 시험하는 계기가
-                  되었습니다." <br />
-                  네이티브와 JS 레이어 간의 명확한 역할 분담(Separation of
-                  Concerns)의 중요성을 깊이 깨달았습니다.
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. 네이티브 만보기 엔진 -->
-            <div class="project-card violet" id="bokji-pedometer">
-              <div
-                class="pc-header"
-                onclick="toggle(this.closest('.project-card'))"
-              >
-                <div>
-                  <div class="pc-tag violet">네이티브</div>
-                  <div class="pc-title">
-                    Native: 자체 만보기 엔진 설계 및 최적화
-                  </div>
-                  <div class="pc-summary">
-                    OS 제약과 실환경 변수를 극복한 고정밀 걸음수 추적 시스템.
-                    외부 의존성을 제거하고 Android Native Sensor API를 직접
-                    제어. 삼성헬스·토스 벤치마킹으로 오차 범위 1% 이내 정밀도
-                    달성.
-                  </div>
-                  <div class="pc-results">
-                    <span class="pc-result-chip">정확도 오차 1% 이내</span>
-                    <span class="pc-result-chip">재부팅 후 걸음수 유지</span>
-                    <span class="pc-result-chip">Android 12~15 대응</span>
-                  </div>
-                </div>
-                <svg
-                  class="pc-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-              <div class="pc-body">
-                <div class="pc-divider"></div>
-                <div class="detail-block">
-                  <div class="detail-label">문제 상황</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <strong>의존성 리스크:</strong> 외부 라이브러리(Google Fit
-                      등) 사용 시 플랫폼 종속성이 높고 커스텀 리워드 로직 구현에
-                      제약 발생
-                    </li>
-                    <li>
-                      <strong>데이터 휘발성:</strong> Native 센서 API는 기기
-                      재부팅·강제 종료 시 누적 값이 초기화되는 물리적 한계 존재
-                    </li>
-                    <li>
-                      <strong>백그라운드 제약:</strong> Android 12~15의 배터리
-                      최적화 정책 및 포그라운드 서비스 제한으로 서비스 생존율
-                      저하
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">① Native 엔진 독자 설계</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      외부 의존성을 제거하고
-                      <strong>Android Native Sensor API 직접 제어</strong>
-                    </li>
-                    <li>
-                      삼성헬스·토스 벤치마킹을 통해 가속도 센서 기반 고정밀 측정
-                      로직 구현 — 대조 테스트 결과 오차 범위
-                      <strong>1% 이내</strong> 달성
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ② 데이터 연속성 보장 — Room/SQLite Checkpoint
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      Android Jetpack Room으로 영속성 레이어 설계 — 실시간
-                      센서값과 로컬 DB 누적치를 동기화하여 재부팅 후에도 기존
-                      걸음수 보존
-                    </li>
-                    <li>
-                      자정 기준 걸음수 자동 초기화 및 앱 재진입 시 서비스 누적값
-                      기준으로 JS 레이어 상태 보정
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">③ 서비스 안정성 강화</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <code>START_STICKY</code> 및 알림 우선순위 최적화로 서비스
-                      생존율 극대화
-                    </li>
-                    <li>
-                      Android 10(Q) <code>ACTIVITY_RECOGNITION</code> 권한,
-                      Android 14/15 백그라운드 작업 제약 등 OS 버전별 분기 처리
-                    </li>
-                    <li>
-                      <code>DeviceEventEmitter</code>로 네이티브 데이터를 JS
-                      레이어로 즉시 브릿징 — 앱 진입 시 지연 없는 실시간 걸음수
-                      애니메이션 제공
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    현재 진행 중 — 서비스 생존율 100% 고도화
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      일부 기기의 Doze 모드·제조사별 공격적인 백그라운드 강제
-                      종료로 드문 서비스 중단 현상 확인 중
-                    </li>
-                    <li>
-                      Firebase Crashlytics + 커스텀 로그로 종료 시점 기기
-                      상태(배터리·메모리) 특정 분석 중
-                    </li>
-                    <li>
-                      WorkManager 기반 Self-Healing 구조(비정상 종료 시 주기적
-                      재시작 보장) 검토·테스트 중
-                    </li>
-                  </ul>
-                </div>
-                <div class="result-box">
-                  <div class="detail-label">성과</div>
-                  <ul class="detail-items">
-                    <li>
-                      삼성헬스·토스 대조 테스트 결과 걸음수 정확도
-                      <strong>오차 1% 이내</strong> 달성
-                    </li>
-                    <li>
-                      1만 명 이상 실사용 환경에서 재부팅 등 주요 변수 대응으로
-                      높은 서비스 연속성 확보
-                    </li>
-                    <li>
-                      Android 15 포함 최신 OS 버전별 권한·백그라운드 정책 준수로
-                      안정적인 배포 기반 마련
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3. Crashlytics -->
-            <div class="project-card violet" id="bokji-crashlytics">
-              <div
-                class="pc-header"
-                onclick="toggle(this.closest('.project-card'))"
-              >
-                <div>
-                  <div class="pc-tag violet">모니터링</div>
-                  <div class="pc-title">
-                    Firebase Crashlytics 기반 ANR 모니터링 체계 구축
-                  </div>
-                  <div class="pc-summary">
-                    Crashlytics 커스텀 리포팅으로 장애 대응 시간 90% 단축.
-                    Android 12+ ANR 발생률 0.3%대 감소, Crash-free 비율 96.5% →
-                    99.8%로 1만 명 규모 서비스 운영 안정성 확보.
-                  </div>
-                  <div class="pc-results">
-                    <span class="pc-result-chip">Crash-free 96.5% → 99.8%</span>
-                    <span class="pc-result-chip">ANR 발생률 0.3%대</span>
-                    <span class="pc-result-chip">장애 대응 시간 90% 단축</span>
-                  </div>
-                </div>
-                <svg
-                  class="pc-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-              <div class="pc-body">
-                <div class="pc-divider"></div>
-                <div class="detail-block">
-                  <div class="detail-label">문제 상황</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      서비스 도입 초기 Crash-free 비율 <strong>96.5%</strong> -
-                      1만 명 규모에서 위험 수준
-                    </li>
-                    <li>
-                      Android 12+ 환경에서
-                      <code>ForegroundServiceStartNotAllowedException</code> 등
-                      비정상 종료·ANR 지속 발생
-                    </li>
-                    <li>
-                      Release 빌드에서만 재현되는 크래시 → 로컬 디버그 환경으로
-                      원인 특정 불가, 모니터링 체계 구축 필수
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">① 커스텀 리포팅 구조 설계</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      회원사마다 사용자 데이터·지원 기능이 달라, 크래시 리포트에
-                      <strong>사용자 정보 + 회원사 정보를 함께 제출</strong>하는
-                      구조 설계
-                    </li>
-                    <li>
-                      장애 발생 시 어떤 회원사·사용자 환경인지 즉시 파악 → 장애
-                      대응 시간 <strong>90% 단축</strong>
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">② ANR 탐지 및 해결 프로세스</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      Crashlytics로 ANR / 크래시 탐지 → 스택 트레이스 분석으로
-                      문제 코드 식별
-                    </li>
-                    <li>Android Studio Logcat / Profiler로 로컬 재현</li>
-                    <li>
-                      Android OS 버전별 Foreground Service 실행 정책 분기 처리로
-                      근본 원인 해소
-                    </li>
-                    <li>단계적 수정 후 재배포 → 재모니터링으로 수치 추적</li>
-                  </ul>
-                </div>
-                <div class="result-box">
-                  <div class="detail-label">결과</div>
-                  <ul class="detail-items">
-                    <li>
-                      Crash-free 사용자 비율 <strong>96.5% → 99.8%</strong>로
-                      상향 안정화
-                    </li>
-                    <li>
-                      Android 12+ ANR 발생률 <strong>0.3%대</strong>로 감소 -
-                      1만 명 규모 서비스 운영 안정성 확보
-                    </li>
-                    <li>
-                      커스텀 리포팅으로 장애 대응 시간 <strong>90% 단축</strong>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4. SDK 마이그레이션 -->
-            <div class="project-card violet" id="bokji-sdk">
-              <div
-                class="pc-header"
-                onclick="toggle(this.closest('.project-card'))"
-              >
-                <div>
-                  <div class="pc-tag violet">마이그레이션</div>
-                  <div class="pc-title">
-                    Expo SDK v51 → v53 마이그레이션 및 New Architecture 전환
-                  </div>
-                  <div class="pc-summary">
-                    Google Play Android 15 타겟팅 의무화에 대응하고, Bridge
-                    방식을 JSI 기반 동기 호출로 전환하여 네이티브 모듈 통신 병목
-                    해소 및 앱 전체 응답 속도 개선.
-                  </div>
-                  <div class="pc-results">
-                    <span class="pc-result-chip"
-                      >Android 15 Play 정책 준수</span
-                    >
-                    <span class="pc-result-chip">Bridge → JSI 전환</span>
-                    <span class="pc-result-chip">16KB 페이지 대응 완료</span>
-                  </div>
-                </div>
-                <svg
-                  class="pc-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-              <div class="pc-body">
-                <div class="pc-divider"></div>
-                <div class="detail-block">
-                  <div class="detail-label">배경 및 전환 이유</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <strong>규제 대응:</strong> Google Play의 Android 15(API
-                      35) 타겟팅 의무화에 따른 배포 안정성 확보 필요
-                    </li>
-                    <li>
-                      <strong>성능 한계:</strong> 기존 Bridge 방식의 비동기 통신
-                      병목을 해결하고 런타임 성능 극대화를 위해 New Architecture
-                      전환 결정
-                    </li>
-                    <li>
-                      <strong>환경 변화:</strong> 차세대 기기의 표준이 될 16KB
-                      페이지 크기 환경에 대한 선제적 네이티브 호환성 검증 필요
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ① New Architecture 전환 — JSI & Fabric
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      직렬화 기반 Bridge 방식을 제거하고
-                      <strong
-                        >JSI(JavaScript Interface) 기반 동기식 네이티브
-                        호출</strong
-                      >로 전환
-                    </li>
-                    <li>
-                      Fabric Renderer 도입으로 복잡한 레이아웃의 렌더링 효율
-                      개선
-                    </li>
-                    <li>
-                      TurboModules 규격에 맞춘 커스텀 브릿지 코드 리팩터링 및 뉴
-                      아키텍처 미지원 레거시 라이브러리 대체 라이브러리로 교체
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">② 16KB 페이지 크기 호환성 확보</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      네이티브 종속성 라이브러리를 전수 조사하여 메모리 정렬
-                      이슈 식별
-                    </li>
-                    <li>
-                      호환 가능한 최신 바이너리(<code>.so</code>)로 교체 및
-                      리빌드하여 차세대 고성능 기기 크래시 방지
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">③ 체계적 마이그레이션 관리</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <code>expo-upgrade-helper</code> 기반 단계적 업그레이드
-                      전략 수립
-                    </li>
-                    <li>
-                      회귀 테스트를 통한 Breaking Changes 즉각 검증으로 서비스
-                      무중단 안정성 확보
-                    </li>
-                  </ul>
-                </div>
-                <div class="result-box">
-                  <div class="detail-label">성과</div>
-                  <ul class="detail-items">
-                    <li>
-                      Android 15 타겟팅 및 최신 Google Play 배포 규정 준수로
-                      <strong>서비스 지속성 확보</strong>
-                    </li>
-                    <li>
-                      JSI 기반 호출 전환으로 네이티브 모듈 통신 지연 단축,
-                      <strong>앱 전체 응답 속도 개선</strong>
-                    </li>
-                    <li>
-                      16KB 페이지 대응 완료로 차세대 기기에서도
-                      <strong>크래시 없는 안정적 구동 기반 마련</strong>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5. 배포 자동화 -->
-            <div class="project-card violet" id="bokji-deploy">
-              <div
-                class="pc-header"
-                onclick="toggle(this.closest('.project-card'))"
-              >
-                <div>
-                  <div class="pc-tag violet">DevOps</div>
-                  <div class="pc-title">
-                    DevOps: 빌드 파이프라인 구축 및 배포 자동화
-                  </div>
-                  <div class="pc-summary">
-                    수동 빌드 환경의 전 과정을 자동화하여 릴리즈 주기 95% 단축.
-                    <br />
-                    EAS Build로 환경 표준화, OTA로 배포 이원화, Fastlane으로
-                    스토어 제출까지 엔드투엔드 자동화 구축.
-                  </div>
-                  <div class="pc-results">
-                    <span class="pc-result-chip">릴리즈 주기 95% 단축</span>
-                    <span class="pc-result-chip">빌드 성공률 100%</span>
-                    <span class="pc-result-chip">담당자 의존성 제거</span>
-                  </div>
-                </div>
-                <svg
-                  class="pc-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-              <div class="pc-body">
-                <div class="pc-divider"></div>
-                <div class="detail-block">
-                  <div class="detail-label">문제 상황</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <strong>휴먼 에러:</strong> 업체별로 다른 빌드 환경을
-                      로컬에서 수동 관리하며 설정 오류·환경 불일치로 빌드 실패
-                      빈번
-                    </li>
-                    <li>
-                      <strong>배포 병목:</strong> 오타 수정 등 가벼운 로직
-                      변경에도 수일이 소요되는 스토어 심사 과정을 매번 반복하여
-                      업데이트 지연
-                    </li>
-                    <li>
-                      <strong>운영 공수:</strong> 스토어 콘솔 업로드와
-                      메타데이터 수기 입력 등 반복 단순 작업이 개발자 생산성
-                      저해
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ① 빌드 표준화 — EAS Build (IaC)
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      <code>eas.json</code>으로 빌드 프로필을
-                      <strong>코드화(IaC)</strong>하여 클라우드 기반 빌드 시스템
-                      구축
-                    </li>
-                    <li>
-                      로컬 환경 의존성을 완전히 제거하여
-                      <strong>빌드 성공률 100% 달성</strong>
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">② 배포 이원화 — OTA Updates</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      네이티브 변경이 없는 수정은 EAS Update로
-                      <strong>심사 없이 즉시 반영</strong> — 장애 대응 속도
-                      극대화
-                    </li>
-                    <li>
-                      Preview 트랙에서 검증 후 Production으로 승격하는 안정적인
-                      단계적 배포 체계 수립
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">③ 워크플로우 자동화 — Fastlane</div>
-                  <ul class="detail-items violet">
-                    <li>
-                      EAS 클라우드 빌드와 Fastlane을 연동, 명령어 한 줄로
-                      바이너리 생성부터 스토어 제출까지
-                      <strong>전 과정 자동화</strong>
-                    </li>
-                    <li>
-                      수동 업로드 공수를 제거하고 개발 본연의 업무에 집중할 수
-                      있는 환경 조성
-                    </li>
-                  </ul>
-                </div>
-                <div class="result-box">
-                  <div class="detail-label">성과</div>
-                  <ul class="detail-items">
-                    <li>
-                      단순 로직 수정 배포 시간
-                      <strong>수일(심사 대기) → 수 분(OTA)</strong>으로 단축,
-                      릴리즈 주기 <strong>95% 개선</strong>
-                    </li>
-                    <li>
-                      빌드 환경 코드화로 환경 의존적 빌드 실패 원천 차단, 빌드
-                      성공률 <strong>100% 달성</strong>
-                    </li>
-                    <li>
-                      반복 수동 작업 자동화로 개발자 생산성 향상 및 릴리즈
-                      담당자 개인 의존성 완전 제거
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- ── 기술 스택 ── -->
       <div class="section" id="skills">
         <div class="section-grid">
@@ -2360,21 +2895,48 @@
                   ><i class="devicon-react-original colored"></i>React
                   Query</span
                 >
-                <span class="skill-tag"><img src="https://bookhabit.github.io/img/zustand.webp" alt="zustand">Zustand</span>
-                <span class="skill-tag"><img src="https://bookhabit.github.io/img/jotai.png" alt="jotai">Jotai</span>
+                <span class="skill-tag"
+                  ><img src="img/zustand.webp" alt="zustand" />Zustand</span
+                >
+                <span class="skill-tag"
+                  ><img src="img/jotai.png" alt="jotai" />Jotai</span
+                >
                 <span class="skill-tag"
                   ><i class="devicon-redux-original colored"></i>Redux</span
                 >
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/recoil" alt="recoil">Recoil</span>
-                <span class="skill-tag"><img src="https://bookhabit.github.io/img/react-hook-form.png" alt="react hook form">React Hook Form</span>
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/zod" alt="zod">Zod</span>
+                <span class="skill-tag"
+                  ><img
+                    src="https://cdn.simpleicons.org/recoil"
+                    alt="recoil"
+                  />Recoil</span
+                >
+                <span class="skill-tag"
+                  ><img
+                    src="img/react-hook-form.png"
+                    alt="react hook form"
+                  />React Hook Form</span
+                >
+                <span class="skill-tag"
+                  ><img
+                    src="https://cdn.simpleicons.org/zod"
+                    alt="zod"
+                  />Zod</span
+                >
               </div>
             </div>
             <div class="skill-row">
               <div class="skill-cat">모바일</div>
               <div class="skill-tags">
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/expo" alt="expo">Expo / EAS</span>
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/fastlane" alt="fastlane">Fastlane</span>
+                <span class="skill-tag"
+                  ><img src="https://cdn.simpleicons.org/expo" alt="expo" />Expo
+                  / EAS</span
+                >
+                <span class="skill-tag"
+                  ><img
+                    src="https://cdn.simpleicons.org/fastlane"
+                    alt="fastlane"
+                  />Fastlane</span
+                >
                 <span class="skill-tag"
                   ><i class="devicon-sqlite-plain colored"></i>SQLite</span
                 >
@@ -2400,9 +2962,6 @@
             <div class="skill-row">
               <div class="skill-cat">API / 통신</div>
               <div class="skill-tags">
-                <span class="skill-tag"
-                  ><i class="devicon-graphql-plain colored"></i>GraphQL</span
-                >
                 <span class="skill-tag">REST API</span>
                 <span class="skill-tag">WebSocket</span>
                 <span class="skill-tag">STOMP</span>
@@ -2441,8 +3000,18 @@
                 <span class="skill-tag"
                   ><i class="devicon-docker-plain colored"></i>Docker</span
                 >
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/claude" alt="claude">Claude</span>
-                <span class="skill-tag"><img src="https://cdn.simpleicons.org/cursor" alt="cursor">Cursor</span>
+                <span class="skill-tag"
+                  ><img
+                    src="https://cdn.simpleicons.org/claude"
+                    alt="claude"
+                  />Claude</span
+                >
+                <span class="skill-tag"
+                  ><img
+                    src="https://cdn.simpleicons.org/cursor"
+                    alt="cursor"
+                  />Cursor</span
+                >
                 <span class="skill-tag"
                   ><i class="devicon-vscode-plain colored"></i>VSCode</span
                 >
@@ -2688,6 +3257,12 @@
     <!-- /page -->
 
     <script>
+      const DOMAIN = "https://bookhabit.github.io";
+
+      document.querySelectorAll('img[src^="img/"]').forEach((img) => {
+        img.src = DOMAIN + "/" + img.getAttribute("src");
+      });
+
       // 스크롤 프로그레스 바
       const progressBar = document.getElementById("progress-bar");
       window.addEventListener("scroll", () => {
