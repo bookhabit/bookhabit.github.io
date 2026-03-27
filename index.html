@@ -930,7 +930,7 @@
       </p>
       <ul class="hero-traits">
         <li>
-          <a href="#bokji-mau" class="hero-trait-link"
+          <a href="#bokji-ssot" class="hero-trait-link"
             >만보기 서비스 구현 및 포인트 지급 제도로 MAU 300% 증가</a
           >
         </li>
@@ -946,9 +946,8 @@
         </li>
         <li>
           <a href="#bokji-security" class="hero-trait-link"
-            >금융감독원 수검 대비 모바일 보안 고도화 - 루팅 차단·난독화·Keystore
-            계층별 대응</a
-          >
+            >OS 커널 및 하드웨어 기반 모바일 서비스 보안 고도화
+          </a>
         </li>
       </ul>
     </section>
@@ -980,14 +979,15 @@
                   </div>
                   <ul class="career-proj-desc">
                     <li>
-                      <a href="#bokji-mau" class="career-item-link"
+                      <a href="#bokji-ssot" class="career-item-link"
                         >만보기 서비스 구현 및 포인트 지급 제도로 MAU 300%
                         증가</a
                       >
                       <ul>
                         <li>
                           <a href="#bokji-ssot" class="career-item-link"
-                            >SSOT 기반 아키텍처 재설계</a
+                            >SSOT (Single Source of Truth) 기반 아키텍처
+                            재설계</a
                           >
                         </li>
                         <li>
@@ -1013,9 +1013,9 @@
                       >
                     </li>
                     <li>
-                      <a href="#bokji-security" class="career-item-link"
-                        >금융감독원 수검 대비 모바일 앱 보안 고도화</a
-                      >
+                      <a href="#bokji-security" class="career-item-link">
+                        OS 커널 및 하드웨어 기반 모바일 서비스 보안 고도화
+                      </a>
                     </li>
                     <li>
                       <a href="#bokji-perf" class="career-item-link"
@@ -1085,108 +1085,6 @@
               <span>실무 프로젝트 상세 - 복지찬스</span>
             </div>
 
-            <!-- 1. MAU 300% 증가 -->
-            <div class="project-card violet" id="bokji-mau">
-              <div
-                class="pc-header"
-                onclick="toggle(this.closest('.project-card'))"
-              >
-                <div>
-                  <div class="pc-tag violet">성장</div>
-                  <div class="pc-title">
-                    만보기 서비스 구현 및 포인트 지급 제도로 MAU 300% 증가
-                  </div>
-                  <div class="pc-summary">
-                    걸음수 기반 복지 포인트 차등 지급, 광고 리워드 구조,
-                    가맹점·온라인 사용처 연결로 앱 핵심 성장 지표를 3배 이상
-                    견인.
-                  </div>
-                  <div class="pc-results">
-                    <span class="pc-result-chip">MAU 300% 증가</span>
-                    <span class="pc-result-chip">리워드 구조 설계</span>
-                    <span class="pc-result-chip">실사용 체감 혜택</span>
-                  </div>
-                </div>
-                <svg
-                  class="pc-chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </div>
-              <div class="pc-body">
-                <div class="pc-divider"></div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ① 유저 리텐션을 위한 인센티브 구조 설계
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      단순 걸음수 측정을 넘어 목표 달성도에 따른
-                      <strong>차등 보상 시스템</strong> 구현 → 일회성 방문객을
-                      충성 사용자로 전환
-                    </li>
-                    <li>
-                      일일 목표 걸음수 달성 시 복지 포인트 즉시 지급 -
-                      게이미피케이션 요소로 앱 재방문 유도
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ② 수익 모델과 유저 혜택의 공존 (광고 리워드 구조)
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      포인트 지급 전 광고 시청 단계를 전략적으로 배치 - 서비스
-                      수익성과 유저 혜택을 동시에 확보
-                    </li>
-                    <li>
-                      포인트 적립이라는 확실한 보상을 통해 광고에 대한 유저
-                      거부감을 최소화
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail-block">
-                  <div class="detail-label">
-                    ③ 온/오프라인 결제 생태계 연결 (포인트 실사용성 확보)
-                  </div>
-                  <ul class="detail-items violet">
-                    <li>
-                      외부 결제 모듈 및 가맹점 API 연동 - 적립 포인트로 상품
-                      구매·결제 가능한 인프라 구축
-                    </li>
-                    <li>
-                      <strong>"포인트 = 현금"</strong> 인식을 심어 포인트 실사용
-                      전환율과 앱 의존도 상승
-                    </li>
-                  </ul>
-                </div>
-                <div class="result-box">
-                  <div class="detail-label">성과</div>
-                  <ul class="detail-items">
-                    <li>
-                      만보기 도입 전 대비 <strong>MAU 300% 상승</strong> -
-                      재방문율(Retention) 유의미한 개선
-                    </li>
-                    <li>
-                      광고 수익 + 포인트 소비가 선순환하는
-                      <strong>자생적 리워드 생태계</strong> 구축
-                    </li>
-                    <li>
-                      포인트 적립 → 광고 시청 → 가맹점 결제까지 이어지는
-                      <strong>End-to-End 유저 저니</strong> 완성
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
             <!-- 2. 만보기 SSOT -->
             <div class="project-card violet" id="bokji-ssot">
               <div
@@ -1195,7 +1093,9 @@
               >
                 <div>
                   <div class="pc-tag violet">아키텍처</div>
-                  <div class="pc-title">SSOT 기반 아키텍처 재설계</div>
+                  <div class="pc-title">
+                    SSOT (Single Source of Truth) 기반 아키텍처 재설계
+                  </div>
                   <div class="pc-summary">
                     Foreground Service 알림창 UI 추가로 발생한 데이터 정합성
                     문제. <br />
@@ -1806,7 +1706,7 @@
                 <div>
                   <div class="pc-tag violet">Security</div>
                   <div class="pc-title">
-                    금융감독원 수검 대비 모바일 앱 보안 고도화
+                    OS 커널 및 하드웨어 기반 모바일 서비스 보안 고도화
                   </div>
                   <div class="pc-summary">
                     루팅/탈옥 차단·난독화·하드웨어 보안 저장소·화면 캡처 방지
@@ -3070,7 +2970,9 @@
 
               <div class="side-item">
                 <div>
-                  <div class="side-title">펫시터 Web &amp; Server</div>
+                  <div class="side-title">
+                    PetSitter: Full-Stack Multi-Platform Monorepo
+                  </div>
                   <div class="side-desc">
                     <ul
                       style="
@@ -3082,13 +2984,26 @@
                       "
                     >
                       <li>
-                        반려동물 돌봄 매칭 서비스. NestJS + Prisma + GraphQL
-                        풀스택 개발
+                        단일 NestJS 백엔드에서 REST · GraphQL을 동시 구현하고,
+                        <br />
+                        React · Next.js · Expo · Android · iOS 6개 클라이언트를
+                        모노레포로 관리
                       </li>
-                      <li>문서 주도 개발(API 명세 → 코드 순서) 방식 도입</li>
                       <li>
-                        Claude Subagents 활용: API 연동·에러 핸들링·컴포넌트
-                        관심사 분리·디자인 시스템 규칙 체계화
+                        SDD(Spec-Driven Development): REQUIREMENTS.md →
+                        openapi.yml 명세 확정 후 프론트·백 병렬 개발로
+                        커뮤니케이션 비용 최소화
+                      </li>
+                      <li>
+                        CLAUDE.md Rule Injection으로 AI에게 아키텍처 가이드
+                        학습,<br />
+                        5단계 멀티에이전트(Test → Server Link → UI → QA →
+                        Refactor)로 기능 완결성 보장
+                      </li>
+                      <li>
+                        Service Layer 공유 위에 Controller(REST) ·
+                        Resolver(GraphQL) 병렬 배치, 오버페칭 해결 과정 및
+                        데이터 페칭 전략 차이를 실무적으로 검증
                       </li>
                     </ul>
                   </div>
